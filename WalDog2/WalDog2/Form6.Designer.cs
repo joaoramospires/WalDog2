@@ -30,6 +30,8 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tsbtt_sair = new System.Windows.Forms.ToolStripButton();
+            this.tsbtt_voltar = new System.Windows.Forms.ToolStripButton();
             this.lbl_ano = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.dayContanier = new System.Windows.Forms.FlowLayoutPanel();
             this.btt_previous = new WalDog2.Botao();
             this.btt_next = new WalDog2.Botao();
-            this.tsbtt_sair = new System.Windows.Forms.ToolStripButton();
-            this.tsbtt_voltar = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -69,6 +69,32 @@
             this.toolStrip2.Size = new System.Drawing.Size(935, 33);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
+            // 
+            // tsbtt_sair
+            // 
+            this.tsbtt_sair.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbtt_sair.AutoSize = false;
+            this.tsbtt_sair.BackgroundImage = global::WalDog2.Properties.Resources.saai;
+            this.tsbtt_sair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tsbtt_sair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtt_sair.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtt_sair.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
+            this.tsbtt_sair.Name = "tsbtt_sair";
+            this.tsbtt_sair.Size = new System.Drawing.Size(25, 30);
+            this.tsbtt_sair.Text = "Sair";
+            this.tsbtt_sair.Click += new System.EventHandler(this.tsbtt_sair_Click);
+            // 
+            // tsbtt_voltar
+            // 
+            this.tsbtt_voltar.BackgroundImage = global::WalDog2.Properties.Resources.voltar2;
+            this.tsbtt_voltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.tsbtt_voltar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbtt_voltar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbtt_voltar.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
+            this.tsbtt_voltar.Name = "tsbtt_voltar";
+            this.tsbtt_voltar.Size = new System.Drawing.Size(23, 30);
+            this.tsbtt_voltar.Text = "Voltar";
+            this.tsbtt_voltar.Click += new System.EventHandler(this.tsbtt_voltar_Click);
             // 
             // lbl_ano
             // 
@@ -198,30 +224,6 @@
             this.btt_next.UseVisualStyleBackColor = false;
             this.btt_next.Click += new System.EventHandler(this.btt_next_Click);
             // 
-            // tsbtt_sair
-            // 
-            this.tsbtt_sair.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbtt_sair.AutoSize = false;
-            this.tsbtt_sair.BackgroundImage = global::WalDog2.Properties.Resources.saai;
-            this.tsbtt_sair.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tsbtt_sair.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtt_sair.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtt_sair.Margin = new System.Windows.Forms.Padding(0, 1, 10, 2);
-            this.tsbtt_sair.Name = "tsbtt_sair";
-            this.tsbtt_sair.Size = new System.Drawing.Size(25, 30);
-            this.tsbtt_sair.Text = "Sair";
-            // 
-            // tsbtt_voltar
-            // 
-            this.tsbtt_voltar.BackgroundImage = global::WalDog2.Properties.Resources.voltar2;
-            this.tsbtt_voltar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.tsbtt_voltar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbtt_voltar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbtt_voltar.Margin = new System.Windows.Forms.Padding(10, 1, 0, 2);
-            this.tsbtt_voltar.Name = "tsbtt_voltar";
-            this.tsbtt_voltar.Size = new System.Drawing.Size(23, 30);
-            this.tsbtt_voltar.Text = "Voltar";
-            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +246,7 @@
             this.Name = "Form6";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form6";
+            this.Load += new System.EventHandler(this.Form6_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip2.ResumeLayout(false);

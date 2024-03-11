@@ -29,20 +29,22 @@ namespace WalDog2.Resources
         // Adicionar cartão
         private void btt_adCartao_Click(object sender, EventArgs e)
         {
+            
             this.Hide();
-            new Form5(_user).Show();
+            new Form7(_user).Show();
         }
         // Marcar passeios
         private void btt_doPasseio_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Form6(_user).Show();
+            new Form5(_user).Show();
         }
         // Ver passeios já e passeios que irão acontecer
         private void btt_verPasseios_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new Form7(_user).Show();
+            new Form6(_user).Show();
+
         }
 
 

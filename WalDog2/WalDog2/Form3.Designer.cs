@@ -414,6 +414,7 @@
             this.tsbtt_sair.Name = "tsbtt_sair";
             this.tsbtt_sair.Size = new System.Drawing.Size(25, 30);
             this.tsbtt_sair.Text = "Sair";
+            this.tsbtt_sair.Click += new System.EventHandler(this.tsbtt_sair_Click);
             // 
             // tsbtt_voltar
             // 
@@ -425,6 +426,7 @@
             this.tsbtt_voltar.Name = "tsbtt_voltar";
             this.tsbtt_voltar.Size = new System.Drawing.Size(23, 30);
             this.tsbtt_voltar.Text = "Voltar";
+            this.tsbtt_voltar.Click += new System.EventHandler(this.tsbtt_voltar_Click);
             // 
             // txt_descricao
             // 

@@ -153,7 +153,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WalDog2.Properties.Resources.WallDog;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -16);
+            this.pictureBox1.Location = new System.Drawing.Point(0, -13);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(353, 362);
             this.pictureBox1.TabIndex = 9;
@@ -179,6 +179,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

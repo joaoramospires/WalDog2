@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WalDog2.Resources;
 
 namespace WalDog2
 {
@@ -20,8 +21,14 @@ namespace WalDog2
             _user = user;
         }
 
-        int mes, ano;
+        private void Form6_Load(object sender, EventArgs e)
+        {
+            displayDays();
+        }
 
+
+
+        int mes, ano;
         private void btt_next_Click(object sender, EventArgs e)
         {
             //Limpar container
@@ -113,6 +120,18 @@ namespace WalDog2
             }
         }
 
+        private void tsbtt_voltar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Form4(_user).Show();
+        }
+
+        private void tsbtt_sair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+         
+        // Criação dos dias ------- Métodos ---------------------------------
         private void displayDays()
         {
             DateTime hoje = DateTime.Now;

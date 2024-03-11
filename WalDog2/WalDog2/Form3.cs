@@ -58,6 +58,15 @@ namespace WalDog2.Resources
 
         }
 
+        private void tsbtt_voltar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Form4(_user).Show();
+        }
+        private void tsbtt_sair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
         // Validação dos campos
         private bool Validar()
@@ -85,5 +94,7 @@ namespace WalDog2.Resources
 
             return temErros;
         }
+
+        
     }
 }

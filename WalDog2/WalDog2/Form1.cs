@@ -22,17 +22,16 @@ namespace WalDog2
         private void Form1_Load(object sender, EventArgs e)
         {
             timer1.Start();
-
         }
-       
+
         private void btt_entrar_Click(object sender, EventArgs e)
         {
 
             ////Se não existr dados do cão
             //if (dadoCao.Count == 0)
             //{
-            this.Hide();
-            new Form3(txt_Username.Text).Show();
+            //this.Hide();
+            //new Form3(txt_Username.Text).Show();
             //}
             //else
             //{

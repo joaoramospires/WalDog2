@@ -16,3 +16,8 @@ D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.pdb
 D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.Form2.resources
 D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.Resources.Form3.resources
 D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.Resources.Form4.resources
+D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.Form5.resources
+D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.Form6.resources
+D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.Form7.resources
+D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.UserControlBlancks.resources
+D:\WalDog2 - M16\WalDog2\WalDog2\WalDog2\obj\Debug\WalDog2.UserControlDays.resources
