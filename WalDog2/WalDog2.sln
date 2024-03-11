@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34309.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WalDog2", "WalDog2\WalDog2.csproj", "{76BDC604-D044-4355-89B9-7A79DFFAC556}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76BDC604-D044-4355-89B9-7A79DFFAC556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76BDC604-D044-4355-89B9-7A79DFFAC556}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76BDC604-D044-4355-89B9-7A79DFFAC556}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76BDC604-D044-4355-89B9-7A79DFFAC556}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06D6D9DE-F1AB-48AD-8F75-7E4CC5D4F531}
+	EndGlobalSection
+EndGlobal
