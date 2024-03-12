@@ -31,6 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form3));
             this.cbox_racaDog = new MetroFramework.Controls.MetroComboBox();
+            this.typeCaoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.walDogDataSet = new WalDog2.WalDogDataSet();
+            this.fkracaCachorroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -67,6 +70,11 @@
             this.btt_submeter = new WalDog2.Botao();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.Erros = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dogDadosTA = new WalDog2.WalDogDataSetTableAdapters.DogDadosTA();
+            this.typeCaoTA = new WalDog2.WalDogDataSetTableAdapters.TypeCaoTA();
+            ((System.ComponentModel.ISupportInitialize)(this.typeCaoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fkracaCachorroBindingSource)).BeginInit();
             this.gbox_Brinquedo.SuspendLayout();
             this.gbox_Raiva.SuspendLayout();
             this.gbox_Alergia.SuspendLayout();
@@ -78,20 +86,38 @@
             // 
             // cbox_racaDog
             // 
+            this.cbox_racaDog.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.fkracaCachorroBindingSource, "racaCachorro", true));
+            this.cbox_racaDog.DataSource = this.typeCaoBindingSource;
             this.cbox_racaDog.DisplayMember = "racaCachorro";
             this.cbox_racaDog.FormattingEnabled = true;
             this.cbox_racaDog.ItemHeight = 23;
-            this.cbox_racaDog.Location = new System.Drawing.Point(165, 90);
+            this.cbox_racaDog.Location = new System.Drawing.Point(165, 78);
             this.cbox_racaDog.Name = "cbox_racaDog";
             this.cbox_racaDog.Size = new System.Drawing.Size(132, 29);
             this.cbox_racaDog.TabIndex = 97;
             this.cbox_racaDog.UseSelectable = true;
+            this.cbox_racaDog.ValueMember = "racaCachorro";
+            // 
+            // typeCaoBindingSource
+            // 
+            this.typeCaoBindingSource.DataMember = "TypeCao";
+            this.typeCaoBindingSource.DataSource = this.walDogDataSet;
+            // 
+            // walDogDataSet
+            // 
+            this.walDogDataSet.DataSetName = "WalDogDataSet";
+            this.walDogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // fkracaCachorroBindingSource
+            // 
+            this.fkracaCachorroBindingSource.DataMember = "fk_racaCachorro";
+            this.fkracaCachorroBindingSource.DataSource = this.typeCaoBindingSource;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(633, 75);
+            this.label11.Location = new System.Drawing.Point(633, 63);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(35, 13);
             this.label11.TabIndex = 96;
@@ -101,7 +127,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(477, 75);
+            this.label8.Location = new System.Drawing.Point(477, 63);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 13);
             this.label8.TabIndex = 95;
@@ -111,7 +137,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(541, 75);
+            this.label7.Location = new System.Drawing.Point(541, 63);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(59, 13);
             this.label7.TabIndex = 94;
@@ -123,7 +149,7 @@
             this.gbox_Brinquedo.Controls.Add(this.rbtt_NaoBrinquedo);
             this.gbox_Brinquedo.Cursor = System.Windows.Forms.Cursors.Default;
             this.gbox_Brinquedo.ForeColor = System.Drawing.Color.White;
-            this.gbox_Brinquedo.Location = new System.Drawing.Point(166, 314);
+            this.gbox_Brinquedo.Location = new System.Drawing.Point(166, 302);
             this.gbox_Brinquedo.Name = "gbox_Brinquedo";
             this.gbox_Brinquedo.Size = new System.Drawing.Size(116, 40);
             this.gbox_Brinquedo.TabIndex = 93;
@@ -154,7 +180,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(60, 329);
+            this.label4.Location = new System.Drawing.Point(60, 317);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 16);
             this.label4.TabIndex = 92;
@@ -164,7 +190,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(344, 103);
+            this.label5.Location = new System.Drawing.Point(344, 91);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(129, 16);
             this.label5.TabIndex = 91;
@@ -179,7 +205,7 @@
             this.gbox_Raiva.Controls.Add(this.rbtt_Raiva2);
             this.gbox_Raiva.Cursor = System.Windows.Forms.Cursors.Default;
             this.gbox_Raiva.ForeColor = System.Drawing.Color.White;
-            this.gbox_Raiva.Location = new System.Drawing.Point(479, 88);
+            this.gbox_Raiva.Location = new System.Drawing.Point(479, 76);
             this.gbox_Raiva.Name = "gbox_Raiva";
             this.gbox_Raiva.Size = new System.Drawing.Size(187, 40);
             this.gbox_Raiva.TabIndex = 90;
@@ -239,7 +265,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(45, 91);
+            this.label10.Location = new System.Drawing.Point(45, 79);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(115, 16);
             this.label10.TabIndex = 89;
@@ -251,7 +277,7 @@
             this.gbox_Alergia.Controls.Add(this.rbtt_Naoalergia);
             this.gbox_Alergia.Cursor = System.Windows.Forms.Cursors.Default;
             this.gbox_Alergia.ForeColor = System.Drawing.Color.White;
-            this.gbox_Alergia.Location = new System.Drawing.Point(479, 156);
+            this.gbox_Alergia.Location = new System.Drawing.Point(479, 144);
             this.gbox_Alergia.Name = "gbox_Alergia";
             this.gbox_Alergia.Size = new System.Drawing.Size(116, 40);
             this.gbox_Alergia.TabIndex = 88;
@@ -283,7 +309,7 @@
             this.gbox_Carinho.Controls.Add(this.rbtt_Naocarinho);
             this.gbox_Carinho.Cursor = System.Windows.Forms.Cursors.Default;
             this.gbox_Carinho.ForeColor = System.Drawing.Color.White;
-            this.gbox_Carinho.Location = new System.Drawing.Point(166, 253);
+            this.gbox_Carinho.Location = new System.Drawing.Point(166, 241);
             this.gbox_Carinho.Name = "gbox_Carinho";
             this.gbox_Carinho.Size = new System.Drawing.Size(116, 40);
             this.gbox_Carinho.TabIndex = 87;
@@ -314,7 +340,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(423, 171);
+            this.label6.Location = new System.Drawing.Point(423, 159);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 16);
             this.label6.TabIndex = 86;
@@ -324,7 +350,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(51, 268);
+            this.label3.Location = new System.Drawing.Point(51, 256);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(109, 16);
             this.label3.TabIndex = 85;
@@ -334,7 +360,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(20, 202);
+            this.label2.Location = new System.Drawing.Point(20, 190);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(140, 16);
             this.label2.TabIndex = 84;
@@ -344,7 +370,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(41, 149);
+            this.label1.Location = new System.Drawing.Point(41, 137);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(119, 16);
             this.label1.TabIndex = 83;
@@ -358,7 +384,7 @@
             "Pequeno",
             "Médio",
             "Grande"});
-            this.cbox_Tamanho.Location = new System.Drawing.Point(166, 201);
+            this.cbox_Tamanho.Location = new System.Drawing.Point(166, 189);
             this.cbox_Tamanho.Name = "cbox_Tamanho";
             this.cbox_Tamanho.Size = new System.Drawing.Size(132, 29);
             this.cbox_Tamanho.TabIndex = 82;
@@ -368,7 +394,7 @@
             // 
             this.txt_nomeDog.Depth = 0;
             this.txt_nomeDog.Hint = "";
-            this.txt_nomeDog.Location = new System.Drawing.Point(166, 142);
+            this.txt_nomeDog.Location = new System.Drawing.Point(166, 130);
             this.txt_nomeDog.MouseState = MaterialSkin.MouseState.HOVER;
             this.txt_nomeDog.Name = "txt_nomeDog";
             this.txt_nomeDog.PasswordChar = '\0';
@@ -386,7 +412,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(720, 31);
+            this.panel1.Size = new System.Drawing.Size(725, 31);
             this.panel1.TabIndex = 98;
             // 
             // toolStrip2
@@ -398,7 +424,7 @@
             this.tsbtt_voltar});
             this.toolStrip2.Location = new System.Drawing.Point(0, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(720, 33);
+            this.toolStrip2.Size = new System.Drawing.Size(725, 33);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -430,7 +456,7 @@
             // 
             // txt_descricao
             // 
-            this.txt_descricao.Location = new System.Drawing.Point(378, 244);
+            this.txt_descricao.Location = new System.Drawing.Point(378, 232);
             this.txt_descricao.Multiline = true;
             this.txt_descricao.Name = "txt_descricao";
             this.txt_descricao.Size = new System.Drawing.Size(280, 110);
@@ -440,7 +466,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(481, 224);
+            this.label9.Location = new System.Drawing.Point(481, 212);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 16);
             this.label9.TabIndex = 99;
@@ -456,7 +482,7 @@
             this.btt_submeter.FlatAppearance.BorderSize = 0;
             this.btt_submeter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btt_submeter.ForeColor = System.Drawing.Color.White;
-            this.btt_submeter.Location = new System.Drawing.Point(244, 416);
+            this.btt_submeter.Location = new System.Drawing.Point(244, 390);
             this.btt_submeter.Name = "btt_submeter";
             this.btt_submeter.Size = new System.Drawing.Size(229, 53);
             this.btt_submeter.TabIndex = 101;
@@ -469,12 +495,20 @@
             // 
             this.Erros.ContainerControl = this;
             // 
+            // dogDadosTA
+            // 
+            this.dogDadosTA.ClearBeforeFill = true;
+            // 
+            // typeCaoTA
+            // 
+            this.typeCaoTA.ClearBeforeFill = true;
+            // 
             // Form3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(720, 510);
+            this.ClientSize = new System.Drawing.Size(725, 477);
             this.Controls.Add(this.btt_submeter);
             this.Controls.Add(this.txt_descricao);
             this.Controls.Add(this.label9);
@@ -500,6 +534,10 @@
             this.Name = "Form3";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form3";
+            this.Load += new System.EventHandler(this.Form3_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.typeCaoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fkracaCachorroBindingSource)).EndInit();
             this.gbox_Brinquedo.ResumeLayout(false);
             this.gbox_Brinquedo.PerformLayout();
             this.gbox_Raiva.ResumeLayout(false);
@@ -557,5 +595,10 @@
         private Botao btt_submeter;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ErrorProvider Erros;
+        private WalDogDataSet walDogDataSet;
+        private WalDogDataSetTableAdapters.DogDadosTA dogDadosTA;
+        private WalDogDataSetTableAdapters.TypeCaoTA typeCaoTA;
+        private System.Windows.Forms.BindingSource typeCaoBindingSource;
+        private System.Windows.Forms.BindingSource fkracaCachorroBindingSource;
     }
 }

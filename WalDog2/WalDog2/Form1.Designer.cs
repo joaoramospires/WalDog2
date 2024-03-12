@@ -40,9 +40,11 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.logarTA = new WalDog2.WalDogDataSetTableAdapters.LogarTA();
             this.dogDadosTA = new WalDog2.WalDogDataSetTableAdapters.DogDadosTA();
+            this.walDogDataSet = new WalDog2.WalDogDataSet();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -52,7 +54,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(353, 31);
+            this.panel1.Size = new System.Drawing.Size(352, 31);
             this.panel1.TabIndex = 1;
             // 
             // toolStrip1
@@ -63,7 +65,7 @@
             this.tsBtt_Sair});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(353, 33);
+            this.toolStrip1.Size = new System.Drawing.Size(352, 33);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -155,7 +157,7 @@
             // 
             this.pictureBox1.BackgroundImage = global::WalDog2.Properties.Resources.WallDog;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(0, -15);
+            this.pictureBox1.Location = new System.Drawing.Point(-1, -17);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(353, 362);
             this.pictureBox1.TabIndex = 9;
@@ -173,12 +175,17 @@
             // 
             this.dogDadosTA.ClearBeforeFill = true;
             // 
+            // walDogDataSet
+            // 
+            this.walDogDataSet.DataSetName = "WalDogDataSet";
+            this.walDogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(353, 329);
+            this.ClientSize = new System.Drawing.Size(352, 323);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btt_entrar);
             this.Controls.Add(this.btt_cadastrar);
@@ -195,6 +202,7 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -212,6 +220,11 @@
         private System.Windows.Forms.Timer timer1;
         private WalDogDataSetTableAdapters.LogarTA logarTA;
         private WalDogDataSetTableAdapters.DogDadosTA dogDadosTA;
+        private WalDogDataSet walDogDataSet;
+        //private WalDogDataSetTableAdapters.LogarTA logarTA;
+        //private WalDogDataSetTableAdapters.DogDadosTA dogDadosTA;
+        //private WalDogDataSet walDogDataSet;
+        //private WalDogDataSetTableAdapters.LogarTA logarTA1;
     }
 }
 

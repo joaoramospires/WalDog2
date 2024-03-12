@@ -220,9 +220,6 @@
     <Compile Include="UserControlDays.Designer.cs">
       <DependentUpon>UserControlDays.cs</DependentUpon>
     </Compile>
-    <Compile Include="WalDogDataSet.cs">
-      <DependentUpon>WalDogDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="WalDogDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

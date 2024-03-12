@@ -20,6 +20,11 @@ namespace WalDog2
             _user = user;
         }
 
+        private void Form5_Load(object sender, EventArgs e)
+        {
+            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
+
+        }
 
         private void tsbtt_voltar_Click(object sender, EventArgs e)
         {
@@ -30,6 +35,29 @@ namespace WalDog2
 
         private void lst_mostrar_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void tsBtt_Sair_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void ServiçosExtras()
+        {//precoPasseio *= Math.Pow(fatorNumeroCachorros, precoServicoExtra)
+
+            double treinamento = 0.50;
+            double alimentacao = 0.30;
+            double outrsCuidados = 0.60;
+
+        }
+
+        private void lstdexChanged(object sender, EventArgs e)
+        {
+
+            //Validação para quando a pessoa marcou o dia errado
+
+
             // Preço base por hora do passeio
             double precoBasePorHora = 10.0;
 
@@ -42,8 +70,8 @@ namespace WalDog2
             bool cuidEspeciasi = false;
 
 
-            tempoPasseio = int.Parse(mtxt_tempoPasseio.Text);
-            dia = int.Parse(mdata_passeio.Text);
+            //tempoPasseio = int.Parse(mtxt_tempoPasseio.Text);
+            //dia = int.Parse(mdata_passeio.Text);
 
 
             if (chek_treinamento.Checked)
@@ -71,22 +99,6 @@ namespace WalDog2
 
             // Cálculo do preço base do passeio
             double precoPasseio = 0 * precoBasePorHora;
-
         }
-
-        private void tsBtt_Sair_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void ServiçosExtras()
-        {//precoPasseio *= Math.Pow(fatorNumeroCachorros, precoServicoExtra)
-
-            double treinamento = 0.50;
-            double alimentacao = 0.30;
-            double outrsCuidados = 0.60;
-
-        }
-
     }
 }

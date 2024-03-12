@@ -21,5 +21,10 @@ namespace WalDog2
         {
             lbl_dia.Text = numDias + "";
         }
+
+        private void pbox_marcacao_Click(object sender, EventArgs e)
+        {
+            // Caso o utilizador aperte no simbolo, apareça os dados do Passeio.
+        }
     }
 }

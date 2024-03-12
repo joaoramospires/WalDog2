@@ -15,8 +15,14 @@ namespace WalDog2.Resources
         string _user;
         public Form4(string user)
         {
-            InitializeComponent();
+            InitializeComponent(); 
             _user = user;
+            this.ActiveControl = null;
+        }
+
+        private void Form4_Load(object sender, EventArgs e)
+        {
+            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
         }
 
 
@@ -77,41 +83,34 @@ namespace WalDog2.Resources
         {
             LimparCampos();
 
-            //var procurarDog = dogDadosTA.GetDataByDadosCao(_user);
+            string selectedDogName = cBox_procurarDog.SelectedIndex.ToString(); // Obtém o nome do cão selecionado na lista
+            var procurarDog = dogDadosTA.GetDataByDadosCao(_user);
 
+            if (procurarDog.Rows.Count > 0)
+            {
+                DataRow row = procurarDog.Rows[int.Parse(selectedDogName)];
 
-            //int i = 0;
-            //if (procurarDog.Rows.Count > 0)
-            //{
-            //    DataRow row = procurarDog.Rows[i];
+                string nomeOfDog = row["nameDog"].ToString();
+                string racaCao = row["racaCachorro"].ToString();
+                string alergia = row["alergia"].ToString();
+                string descricao = row["descricao"].ToString();
 
-            //    string nomeOfDog = row["nameDog"].ToString();
-            //    string racaCao = row["racaCachorro"].ToString();
-            //    string alergia = row["alergia"].ToString();
-            //    string descricao = row["descricao"].ToString();
+                // Exibe os dados na interface do usuário
+                groupBox1.Text = nomeOfDog;
+                lbl_racaCao.Text = racaCao;
 
-            //    // Exibe os dados na interface do usuário
-            //    groupBox1.Text = nomeOfDog;
-            //    lbl_racaCao.Text = racaCao;
+                if (alergia == "Sim")
+                {
+                    rbtt_Simalergia.Checked = true;
+                }
+                else
+                {
+                    rbtt_Naoalergia.Checked = true;
+                }
 
-            //    if (alergia == "Sim")
-            //    {
-            //        rbtt_Simalergia.Checked = true;
-            //    }
-            //    else
-            //    {
-            //        rbtt_Naoalergia.Checked = true;
-            //    }
-
-            //    txt_descricao.Text = descricao;
-
-            //    i++;
-
-            //}
-            //else
-            //{
-
-            //}
+                txt_descricao.Text = descricao;
+            }
+            
         }
     }
 }

@@ -16,7 +16,8 @@ pass VARCHAR (50) NOT NULL)
 
 CREATE TABLE Pagamentos
 (idPagamentos INT IDENTITY(1,1) PRIMARY KEY,
-valorConta DECIMAL(25, 2) NOT NULL)
+valorConta DECIMAL(25, 2) NOT NULL,
+username VARCHAR(50), CONSTRAINT fk_usernameV FOREIGN KEY (username) REFERENCES Logar(username))
 
 
 CREATE TABLE BancoDinheiro
@@ -166,7 +167,7 @@ VALUES('Afghan Hound'),
 ('Zuchon (Shichon)'), 
 ('Outro');
 
--- SELECT * FROM DogDados
+
 CREATE TABLE DogDados
 (idDoguinho INT IDENTITY(1,1) PRIMARY KEY,
 nameDog VARCHAR(20) NOT NULL,

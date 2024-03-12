@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lbl_dia = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pbox_marcacao = new System.Windows.Forms.PictureBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_marcacao)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_dia
@@ -43,26 +45,27 @@
             this.lbl_dia.TabIndex = 22;
             this.lbl_dia.Text = "00";
             // 
-            // pictureBox1
+            // pbox_marcacao
             // 
-            this.pictureBox1.BackgroundImage = global::WalDog2.Properties.Resources.marcado2;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(66, 48);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(46, 38);
-            this.pictureBox1.TabIndex = 23;
-            this.pictureBox1.TabStop = false;
+            this.pbox_marcacao.BackgroundImage = global::WalDog2.Properties.Resources.marcado2;
+            this.pbox_marcacao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pbox_marcacao.Location = new System.Drawing.Point(66, 48);
+            this.pbox_marcacao.Name = "pbox_marcacao";
+            this.pbox_marcacao.Size = new System.Drawing.Size(46, 38);
+            this.pbox_marcacao.TabIndex = 23;
+            this.pbox_marcacao.TabStop = false;
+            this.pbox_marcacao.Click += new System.EventHandler(this.pbox_marcacao_Click);
             // 
             // UserControlDays
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pbox_marcacao);
             this.Controls.Add(this.lbl_dia);
             this.Name = "UserControlDays";
             this.Size = new System.Drawing.Size(124, 97);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbox_marcacao)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -70,7 +73,8 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pbox_marcacao;
         private System.Windows.Forms.Label lbl_dia;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

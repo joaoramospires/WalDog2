@@ -19,6 +19,16 @@ namespace WalDog2.Resources
             _user = user;
         }
 
+        private void Form3_Load(object sender, EventArgs e)
+        {
+            // TODO: esta linha de código carrega dados na tabela 'walDogDataSet.DogDados'. Você pode movê-la ou removê-la conforme necessário.
+            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
+            // TODO: esta linha de código carrega dados na tabela 'walDogDataSet.TypeCao'. Você pode movê-la ou removê-la conforme necessário.
+            this.typeCaoTA.Fill(this.walDogDataSet.TypeCao);
+
+        }
+
+
         private void btt_submeter_Click(object sender, EventArgs e)
         {
             // Array para armazenar os valores de cada GroupBox
@@ -43,8 +53,8 @@ namespace WalDog2.Resources
             if (i == 4) // Verifica se foram selecionados quatro valores
             {
 
-                //dogDadosTA.Insert(txt_nomeDog.Text, cbox_Tamanho.SelectedItem.ToString(), valores[0], valores[2], valores[1],
-                //    valores[3], txt_descricao.Text, _user, cbox_racaDog.SelectedValue.ToString());
+                dogDadosTA.Insert(txt_nomeDog.Text, cbox_Tamanho.SelectedItem.ToString(), valores[0], valores[2], valores[1],
+                    valores[3], txt_descricao.Text, _user, cbox_racaDog.SelectedValue.ToString());
 
                 this.Hide();
                 new Form4(_user).Show();
@@ -95,6 +105,17 @@ namespace WalDog2.Resources
             return temErros;
         }
 
-        
+        private void fillByToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.typeCaoTA.FillBy(this.walDogDataSet.TypeCao);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
     }
 }

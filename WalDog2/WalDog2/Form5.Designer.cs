@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form5));
             this.label7 = new System.Windows.Forms.Label();
             this.lst_mostrar = new System.Windows.Forms.ListBox();
+            this.dogDadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.walDogDataSet = new WalDog2.WalDogDataSet();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.chek_cuidadoEspe = new System.Windows.Forms.CheckBox();
             this.chek_alimentacao = new System.Windows.Forms.CheckBox();
@@ -47,6 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_nome = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.bancoDinheiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.mdata_passeio = new MetroFramework.Controls.MetroDateTime();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_precoPasseio = new System.Windows.Forms.Label();
@@ -63,8 +67,15 @@
             this.btt_escolherCaes = new WalDog2.Botao();
             this.btt_marcarPasseio = new WalDog2.Botao();
             this.btt_gerarPreco = new WalDog2.Botao();
+            this.dogDadosTA = new WalDog2.WalDogDataSetTableAdapters.DogDadosTA();
+            this.pagamentosTA = new WalDog2.WalDogDataSetTableAdapters.PagamentosTA();
+            this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
+            this.bancoDinheiroTA = new WalDog2.WalDogDataSetTableAdapters.BancoDinheiroTA();
+            ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bancoDinheiroBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -84,13 +95,25 @@
             // lst_mostrar
             // 
             this.lst_mostrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lst_mostrar.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.dogDadosBindingSource, "nameDog", true));
+            this.lst_mostrar.DataSource = this.dogDadosBindingSource;
+            this.lst_mostrar.DisplayMember = "nameDog";
             this.lst_mostrar.FormattingEnabled = true;
             this.lst_mostrar.Location = new System.Drawing.Point(30, 72);
             this.lst_mostrar.Name = "lst_mostrar";
             this.lst_mostrar.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lst_mostrar.Size = new System.Drawing.Size(251, 134);
             this.lst_mostrar.TabIndex = 103;
-            this.lst_mostrar.SelectedIndexChanged += new System.EventHandler(this.lst_mostrar_SelectedIndexChanged);
+            // 
+            // dogDadosBindingSource
+            // 
+            this.dogDadosBindingSource.DataMember = "DogDados";
+            this.dogDadosBindingSource.DataSource = this.walDogDataSet;
+            // 
+            // walDogDataSet
+            // 
+            this.walDogDataSet.DataSetName = "WalDogDataSet";
+            this.walDogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox4
             // 
@@ -270,6 +293,8 @@
             this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bancoDinheiroBindingSource, "idPagamentos", true));
+            this.comboBox1.DataSource = this.bancoDinheiroBindingSource;
             this.comboBox1.DisplayMember = "nome";
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(415, 48);
@@ -277,7 +302,11 @@
             this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBox1.Size = new System.Drawing.Size(125, 21);
             this.comboBox1.TabIndex = 100;
-            this.comboBox1.ValueMember = "nif";
+            // 
+            // bancoDinheiroBindingSource
+            // 
+            this.bancoDinheiroBindingSource.DataMember = "BancoDinheiro";
+            this.bancoDinheiroBindingSource.DataSource = this.walDogDataSet;
             // 
             // mdata_passeio
             // 
@@ -292,7 +321,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(129, 480);
+            this.label3.Location = new System.Drawing.Point(129, 483);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(114, 16);
             this.label3.TabIndex = 97;
@@ -302,7 +331,7 @@
             // 
             this.lbl_precoPasseio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_precoPasseio.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.lbl_precoPasseio.Location = new System.Drawing.Point(138, 496);
+            this.lbl_precoPasseio.Location = new System.Drawing.Point(136, 500);
             this.lbl_precoPasseio.Name = "lbl_precoPasseio";
             this.lbl_precoPasseio.Size = new System.Drawing.Size(97, 21);
             this.lbl_precoPasseio.TabIndex = 96;
@@ -468,6 +497,22 @@
             this.btt_gerarPreco.TextColor = System.Drawing.Color.White;
             this.btt_gerarPreco.UseVisualStyleBackColor = false;
             // 
+            // dogDadosTA
+            // 
+            this.dogDadosTA.ClearBeforeFill = true;
+            // 
+            // pagamentosTA
+            // 
+            this.pagamentosTA.ClearBeforeFill = true;
+            // 
+            // passeiosTA
+            // 
+            this.passeiosTA.ClearBeforeFill = true;
+            // 
+            // bancoDinheiroTA
+            // 
+            this.bancoDinheiroTA.ClearBeforeFill = true;
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -496,10 +541,14 @@
             this.Name = "Form5";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form5";
+            this.Load += new System.EventHandler(this.Form5_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bancoDinheiroBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -546,5 +595,12 @@
         private Botao btt_escolherCaes;
         private Botao btt_marcarPasseio;
         private Botao btt_gerarPreco;
+        private WalDogDataSetTableAdapters.DogDadosTA dogDadosTA;
+        private WalDogDataSet walDogDataSet;
+        private WalDogDataSetTableAdapters.PagamentosTA pagamentosTA;
+        private WalDogDataSetTableAdapters.PasseiosTA passeiosTA;
+        private WalDogDataSetTableAdapters.BancoDinheiroTA bancoDinheiroTA;
+        private System.Windows.Forms.BindingSource dogDadosBindingSource;
+        private System.Windows.Forms.BindingSource bancoDinheiroBindingSource;
     }
 }
