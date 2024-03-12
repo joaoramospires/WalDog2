@@ -2,14 +2,17 @@ CREATE DATABASE WalDog
 
 USE WalDog
 
+-- SELECT * FROM Logar
+-- SELECT * FROM Pagamentos
+-- SELECT * FROM BancoDinheiro
+
+-- DELETE Logar
+
+
 CREATE TABLE Logar
 (username VARCHAR (50) PRIMARY KEY NOT NULL,
 pass VARCHAR (50) NOT NULL)
 
--- SELECT * FROM BancoDinheiro
--- SELECT * FROM Logar
-
--- DELETE DogDados
 
 CREATE TABLE Pagamentos
 (idPagamentos INT IDENTITY(1,1) PRIMARY KEY,

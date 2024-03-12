@@ -51,11 +51,16 @@
             this.txt_confirmPassword = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txt_password = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txt_username = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.btt_cadastrar = new WalDog2.Botao();
             this.Erros = new System.Windows.Forms.ErrorProvider(this.components);
+            this.logarTA = new WalDog2.WalDogDataSetTableAdapters.LogarTA();
+            this.bancoDinheiroTA = new WalDog2.WalDogDataSetTableAdapters.BancoDinheiroTA();
+            this.pagamentosTA = new WalDog2.WalDogDataSetTableAdapters.PagamentosTA();
+            this.walDogDataSet = new WalDog2.WalDogDataSet();
+            this.btt_cadastrar = new WalDog2.Botao();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Erros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -308,6 +313,27 @@
             this.txt_username.TabIndex = 47;
             this.txt_username.UseSystemPasswordChar = false;
             // 
+            // Erros
+            // 
+            this.Erros.ContainerControl = this;
+            // 
+            // logarTA
+            // 
+            this.logarTA.ClearBeforeFill = true;
+            // 
+            // bancoDinheiroTA
+            // 
+            this.bancoDinheiroTA.ClearBeforeFill = true;
+            // 
+            // pagamentosTA
+            // 
+            this.pagamentosTA.ClearBeforeFill = true;
+            // 
+            // walDogDataSet
+            // 
+            this.walDogDataSet.DataSetName = "WalDogDataSet";
+            this.walDogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btt_cadastrar
             // 
             this.btt_cadastrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
@@ -326,10 +352,6 @@
             this.btt_cadastrar.TextColor = System.Drawing.Color.White;
             this.btt_cadastrar.UseVisualStyleBackColor = false;
             this.btt_cadastrar.Click += new System.EventHandler(this.btt_cadastrar_Click);
-            // 
-            // Erros
-            // 
-            this.Erros.ContainerControl = this;
             // 
             // Form2
             // 
@@ -361,11 +383,13 @@
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
+            this.Load += new System.EventHandler(this.Form2_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Erros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -397,5 +421,9 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_username;
         private Botao btt_cadastrar;
         private System.Windows.Forms.ErrorProvider Erros;
+        private WalDogDataSetTableAdapters.LogarTA logarTA;
+        private WalDogDataSetTableAdapters.BancoDinheiroTA bancoDinheiroTA;
+        private WalDogDataSetTableAdapters.PagamentosTA pagamentosTA;
+        private WalDogDataSet walDogDataSet;
     }
 }

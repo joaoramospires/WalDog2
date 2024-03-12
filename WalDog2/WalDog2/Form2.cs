@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WalDog2.WalDogDataSetTableAdapters;
 
 namespace WalDog2
 {
@@ -15,6 +16,51 @@ namespace WalDog2
         public Form2()
         {
             InitializeComponent();
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            this.pagamentosTA.Fill(this.walDogDataSet.Pagamentos);
+        }
+
+        
+        //Realizar cadastro
+        private void btt_cadastrar_Click(object sender, EventArgs e)
+        {
+            // ISSO FAZ RETIRAR O TRAÇO OU QUALQUER CARACTER USADO NA MASKBOX
+            //Tira a formatação
+            mtxt_numCartao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            mtxt_validadeCartao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+
+
+            //retorna a formatação
+            //mtxt_numCartao.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+            //mtxt_validadeCartao.TextMaskFormat = MaskFormat.IncludePromptAndLiterals;
+
+
+
+            //fazer validação para ver se já foi inserido uma pessoa com esses mesmos valores
+            logarTA.Insert(txt_username.Text, txt_password.Text);
+
+            pagamentosTA.Insert(Int64.Parse(txt_valorConta.Text));
+
+            pagamentosTA.Fill(this.walDogDataSet.Pagamentos);
+
+            //
+
+
+            // não puxa o ID, erro ----------------------------------------------------
+            var chamarID2 = pagamentosTA.GetDataByID();
+
+            int chamarID = chamarID2[0].idPagamentos;
+            MessageBox.Show(chamarID.ToString());
+
+            bancoDinheiroTA.Insert(txt_nome.Text, mtxt_nif.Text, mtxt_numCartao.Text,
+                mtxt_validadeCartao.Text, mtxt_cvc.Text, txt_username.Text, Convert.ToInt32(chamarID));
+
+
+            this.Hide();
+            new Form1().Show();
         }
 
         //Voltar ao forms de Login(Form1)
@@ -30,21 +76,6 @@ namespace WalDog2
         }
 
 
-        //Realizar cadastro
-        private void btt_cadastrar_Click(object sender, EventArgs e)
-        {
-            // ISSO FAZ RETIRAR O TRAÇO OU QUALQUER CARACTER USADO NA MASKBOX
-            //Tira a formatação
-            mtxt_numCartao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-            mtxt_validadeCartao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
-
-
-
-
-
-            this.Hide();
-            new Form1().Show();
-        }
 
         // Validação para não deixar os campos null e confirmar as duas senhas
         private bool Validar()
@@ -110,5 +141,7 @@ namespace WalDog2
 
             return temErros;
         }
+
+        
     }
 }
