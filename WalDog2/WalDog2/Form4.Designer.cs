@@ -107,7 +107,6 @@
             this.cBox_procurarDog.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.dogDadosBindingSource, "nameDog", true));
             this.cBox_procurarDog.DataSource = this.dogDadosBindingSource;
             this.cBox_procurarDog.DisplayMember = "nameDog";
-            this.cBox_procurarDog.Enabled = false;
             this.cBox_procurarDog.FormattingEnabled = true;
             this.cBox_procurarDog.ImeMode = System.Windows.Forms.ImeMode.On;
             this.cBox_procurarDog.IntegralHeight = false;

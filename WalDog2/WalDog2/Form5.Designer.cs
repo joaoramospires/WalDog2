@@ -51,7 +51,6 @@
             this.lbl_nome = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.bancoDinheiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.mdata_passeio = new MetroFramework.Controls.MetroDateTime();
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_precoPasseio = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,6 +70,8 @@
             this.pagamentosTA = new WalDog2.WalDogDataSetTableAdapters.PagamentosTA();
             this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
             this.bancoDinheiroTA = new WalDog2.WalDogDataSetTableAdapters.BancoDinheiroTA();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.mdata_passeio = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -102,7 +103,7 @@
             this.lst_mostrar.Location = new System.Drawing.Point(30, 72);
             this.lst_mostrar.Name = "lst_mostrar";
             this.lst_mostrar.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lst_mostrar.Size = new System.Drawing.Size(251, 134);
+            this.lst_mostrar.Size = new System.Drawing.Size(155, 134);
             this.lst_mostrar.TabIndex = 103;
             // 
             // dogDadosBindingSource
@@ -123,7 +124,7 @@
             this.groupBox4.Cursor = System.Windows.Forms.Cursors.Default;
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
-            this.groupBox4.Location = new System.Drawing.Point(30, 317);
+            this.groupBox4.Location = new System.Drawing.Point(30, 326);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(203, 116);
             this.groupBox4.TabIndex = 102;
@@ -176,7 +177,7 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.lbl_nome);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(389, 76);
+            this.groupBox1.Location = new System.Drawing.Point(313, 79);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(312, 221);
             this.groupBox1.TabIndex = 101;
@@ -297,7 +298,7 @@
             this.comboBox1.DataSource = this.bancoDinheiroBindingSource;
             this.comboBox1.DisplayMember = "nome";
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(415, 48);
+            this.comboBox1.Location = new System.Drawing.Point(339, 51);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.comboBox1.Size = new System.Drawing.Size(125, 21);
@@ -307,15 +308,6 @@
             // 
             this.bancoDinheiroBindingSource.DataMember = "BancoDinheiro";
             this.bancoDinheiroBindingSource.DataSource = this.walDogDataSet;
-            // 
-            // mdata_passeio
-            // 
-            this.mdata_passeio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.mdata_passeio.Location = new System.Drawing.Point(155, 268);
-            this.mdata_passeio.MinimumSize = new System.Drawing.Size(0, 29);
-            this.mdata_passeio.Name = "mdata_passeio";
-            this.mdata_passeio.Size = new System.Drawing.Size(109, 29);
-            this.mdata_passeio.TabIndex = 98;
             // 
             // label3
             // 
@@ -340,17 +332,18 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(27, 227);
+            this.label2.Location = new System.Drawing.Point(27, 235);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 16);
             this.label2.TabIndex = 95;
             this.label2.Text = "Tempo de passeio";
+            this.toolTip1.SetToolTip(this.label2, "Coloque em minutos");
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(42, 272);
+            this.label1.Location = new System.Drawing.Point(42, 284);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(107, 16);
             this.label1.TabIndex = 94;
@@ -358,10 +351,10 @@
             // 
             // txt_descricao
             // 
-            this.txt_descricao.Location = new System.Drawing.Point(385, 325);
+            this.txt_descricao.Location = new System.Drawing.Point(313, 345);
             this.txt_descricao.Multiline = true;
             this.txt_descricao.Name = "txt_descricao";
-            this.txt_descricao.Size = new System.Drawing.Size(316, 116);
+            this.txt_descricao.Size = new System.Drawing.Size(312, 116);
             this.txt_descricao.TabIndex = 93;
             // 
             // label9
@@ -376,19 +369,20 @@
             // 
             // mtxt_tempoPasseio
             // 
-            this.mtxt_tempoPasseio.Location = new System.Drawing.Point(155, 230);
+            this.mtxt_tempoPasseio.Location = new System.Drawing.Point(155, 238);
             this.mtxt_tempoPasseio.Mask = "00:00";
             this.mtxt_tempoPasseio.Name = "mtxt_tempoPasseio";
             this.mtxt_tempoPasseio.Size = new System.Drawing.Size(40, 20);
             this.mtxt_tempoPasseio.TabIndex = 91;
             this.mtxt_tempoPasseio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.toolTip1.SetToolTip(this.mtxt_tempoPasseio, "Coloque em minutos");
             this.mtxt_tempoPasseio.ValidatingType = typeof(System.DateTime);
             // 
             // pictureBox2
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(389, 48);
+            this.pictureBox2.Location = new System.Drawing.Point(313, 51);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(20, 21);
             this.pictureBox2.TabIndex = 99;
@@ -401,7 +395,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(719, 31);
+            this.panel1.Size = new System.Drawing.Size(658, 31);
             this.panel1.TabIndex = 105;
             // 
             // toolStrip1
@@ -413,7 +407,7 @@
             this.tsbtt_voltar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(719, 33);
+            this.toolStrip1.Size = new System.Drawing.Size(658, 33);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -453,13 +447,14 @@
             this.btt_escolherCaes.FlatAppearance.BorderSize = 0;
             this.btt_escolherCaes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btt_escolherCaes.ForeColor = System.Drawing.Color.White;
-            this.btt_escolherCaes.Location = new System.Drawing.Point(243, 172);
+            this.btt_escolherCaes.Location = new System.Drawing.Point(155, 175);
             this.btt_escolherCaes.Name = "btt_escolherCaes";
             this.btt_escolherCaes.Size = new System.Drawing.Size(92, 34);
             this.btt_escolherCaes.TabIndex = 106;
             this.btt_escolherCaes.Text = "Escolher os selecionados";
             this.btt_escolherCaes.TextColor = System.Drawing.Color.White;
             this.btt_escolherCaes.UseVisualStyleBackColor = false;
+            this.btt_escolherCaes.Click += new System.EventHandler(this.btt_escolherCaes_Click);
             // 
             // btt_marcarPasseio
             // 
@@ -471,7 +466,7 @@
             this.btt_marcarPasseio.FlatAppearance.BorderSize = 0;
             this.btt_marcarPasseio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btt_marcarPasseio.ForeColor = System.Drawing.Color.White;
-            this.btt_marcarPasseio.Location = new System.Drawing.Point(512, 495);
+            this.btt_marcarPasseio.Location = new System.Drawing.Point(465, 485);
             this.btt_marcarPasseio.Name = "btt_marcarPasseio";
             this.btt_marcarPasseio.Size = new System.Drawing.Size(160, 46);
             this.btt_marcarPasseio.TabIndex = 107;
@@ -513,12 +508,22 @@
             // 
             this.bancoDinheiroTA.ClearBeforeFill = true;
             // 
+            // mdata_passeio
+            // 
+            this.mdata_passeio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
+            this.mdata_passeio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.mdata_passeio.Location = new System.Drawing.Point(155, 284);
+            this.mdata_passeio.Name = "mdata_passeio";
+            this.mdata_passeio.Size = new System.Drawing.Size(83, 22);
+            this.mdata_passeio.TabIndex = 109;
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(719, 572);
+            this.ClientSize = new System.Drawing.Size(658, 556);
+            this.Controls.Add(this.mdata_passeio);
             this.Controls.Add(this.btt_gerarPreco);
             this.Controls.Add(this.btt_marcarPasseio);
             this.Controls.Add(this.btt_escolherCaes);
@@ -529,7 +534,6 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.mdata_passeio);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbl_precoPasseio);
             this.Controls.Add(this.label2);
@@ -580,7 +584,6 @@
         private System.Windows.Forms.Label lbl_nome;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private MetroFramework.Controls.MetroDateTime mdata_passeio;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_precoPasseio;
         private System.Windows.Forms.Label label2;
@@ -602,5 +605,7 @@
         private WalDogDataSetTableAdapters.BancoDinheiroTA bancoDinheiroTA;
         private System.Windows.Forms.BindingSource dogDadosBindingSource;
         private System.Windows.Forms.BindingSource bancoDinheiroBindingSource;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DateTimePicker mdata_passeio;
     }
 }

@@ -18,11 +18,12 @@ namespace WalDog2.Resources
             InitializeComponent(); 
             _user = user;
             this.ActiveControl = null;
+            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
         }
 
         private void Form4_Load(object sender, EventArgs e)
         {
-            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
+            this.ActiveControl = null;
         }
 
 
@@ -81,6 +82,8 @@ namespace WalDog2.Resources
 
         private void cBox_procurarDog_SelectedIndexChanged(object sender, EventArgs e)
         {
+            
+
             LimparCampos();
 
             string selectedDogName = cBox_procurarDog.SelectedIndex.ToString(); // Obtém o nome do cão selecionado na lista

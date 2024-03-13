@@ -6,8 +6,7 @@ USE WalDog
 -- SELECT * FROM Pagamentos
 -- SELECT * FROM BancoDinheiro
 
--- DELETE Logar
-
+-- DELETE DogDados
 
 CREATE TABLE Logar
 (username VARCHAR (50) PRIMARY KEY NOT NULL,
