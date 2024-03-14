@@ -63,15 +63,15 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsBtt_Sair = new System.Windows.Forms.ToolStripButton();
             this.tsbtt_voltar = new System.Windows.Forms.ToolStripButton();
-            this.btt_escolherCaes = new WalDog2.Botao();
-            this.btt_marcarPasseio = new WalDog2.Botao();
-            this.btt_gerarPreco = new WalDog2.Botao();
             this.dogDadosTA = new WalDog2.WalDogDataSetTableAdapters.DogDadosTA();
             this.pagamentosTA = new WalDog2.WalDogDataSetTableAdapters.PagamentosTA();
             this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
             this.bancoDinheiroTA = new WalDog2.WalDogDataSetTableAdapters.BancoDinheiroTA();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mdata_passeio = new System.Windows.Forms.DateTimePicker();
+            this.btt_gerarPreco = new WalDog2.Botao();
+            this.btt_marcarPasseio = new WalDog2.Botao();
+            this.btt_escolherCaes = new WalDog2.Botao();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
             this.groupBox4.SuspendLayout();
@@ -102,9 +102,9 @@
             this.lst_mostrar.FormattingEnabled = true;
             this.lst_mostrar.Location = new System.Drawing.Point(30, 72);
             this.lst_mostrar.Name = "lst_mostrar";
-            this.lst_mostrar.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lst_mostrar.Size = new System.Drawing.Size(155, 134);
             this.lst_mostrar.TabIndex = 103;
+            this.lst_mostrar.Enter += new System.EventHandler(this.lst_mostrar_Enter);
             // 
             // dogDadosBindingSource
             // 
@@ -437,61 +437,6 @@
             this.tsbtt_voltar.Text = "Voltar";
             this.tsbtt_voltar.Click += new System.EventHandler(this.tsbtt_voltar_Click);
             // 
-            // btt_escolherCaes
-            // 
-            this.btt_escolherCaes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_escolherCaes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_escolherCaes.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btt_escolherCaes.BorderRadius = 10;
-            this.btt_escolherCaes.BorderSize = 0;
-            this.btt_escolherCaes.FlatAppearance.BorderSize = 0;
-            this.btt_escolherCaes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btt_escolherCaes.ForeColor = System.Drawing.Color.White;
-            this.btt_escolherCaes.Location = new System.Drawing.Point(155, 175);
-            this.btt_escolherCaes.Name = "btt_escolherCaes";
-            this.btt_escolherCaes.Size = new System.Drawing.Size(92, 34);
-            this.btt_escolherCaes.TabIndex = 106;
-            this.btt_escolherCaes.Text = "Escolher os selecionados";
-            this.btt_escolherCaes.TextColor = System.Drawing.Color.White;
-            this.btt_escolherCaes.UseVisualStyleBackColor = false;
-            this.btt_escolherCaes.Click += new System.EventHandler(this.btt_escolherCaes_Click);
-            // 
-            // btt_marcarPasseio
-            // 
-            this.btt_marcarPasseio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_marcarPasseio.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_marcarPasseio.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btt_marcarPasseio.BorderRadius = 10;
-            this.btt_marcarPasseio.BorderSize = 0;
-            this.btt_marcarPasseio.FlatAppearance.BorderSize = 0;
-            this.btt_marcarPasseio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btt_marcarPasseio.ForeColor = System.Drawing.Color.White;
-            this.btt_marcarPasseio.Location = new System.Drawing.Point(465, 485);
-            this.btt_marcarPasseio.Name = "btt_marcarPasseio";
-            this.btt_marcarPasseio.Size = new System.Drawing.Size(160, 46);
-            this.btt_marcarPasseio.TabIndex = 107;
-            this.btt_marcarPasseio.Text = "Marcar Passeio";
-            this.btt_marcarPasseio.TextColor = System.Drawing.Color.White;
-            this.btt_marcarPasseio.UseVisualStyleBackColor = false;
-            // 
-            // btt_gerarPreco
-            // 
-            this.btt_gerarPreco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_gerarPreco.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_gerarPreco.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btt_gerarPreco.BorderRadius = 10;
-            this.btt_gerarPreco.BorderSize = 0;
-            this.btt_gerarPreco.FlatAppearance.BorderSize = 0;
-            this.btt_gerarPreco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btt_gerarPreco.ForeColor = System.Drawing.Color.White;
-            this.btt_gerarPreco.Location = new System.Drawing.Point(45, 475);
-            this.btt_gerarPreco.Name = "btt_gerarPreco";
-            this.btt_gerarPreco.Size = new System.Drawing.Size(78, 56);
-            this.btt_gerarPreco.TabIndex = 108;
-            this.btt_gerarPreco.Text = " Gerar preço \r\n de passeio\r\n";
-            this.btt_gerarPreco.TextColor = System.Drawing.Color.White;
-            this.btt_gerarPreco.UseVisualStyleBackColor = false;
-            // 
             // dogDadosTA
             // 
             this.dogDadosTA.ClearBeforeFill = true;
@@ -516,6 +461,62 @@
             this.mdata_passeio.Name = "mdata_passeio";
             this.mdata_passeio.Size = new System.Drawing.Size(83, 22);
             this.mdata_passeio.TabIndex = 109;
+            // 
+            // btt_gerarPreco
+            // 
+            this.btt_gerarPreco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_gerarPreco.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_gerarPreco.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btt_gerarPreco.BorderRadius = 10;
+            this.btt_gerarPreco.BorderSize = 0;
+            this.btt_gerarPreco.FlatAppearance.BorderSize = 0;
+            this.btt_gerarPreco.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btt_gerarPreco.ForeColor = System.Drawing.Color.White;
+            this.btt_gerarPreco.Location = new System.Drawing.Point(45, 475);
+            this.btt_gerarPreco.Name = "btt_gerarPreco";
+            this.btt_gerarPreco.Size = new System.Drawing.Size(78, 56);
+            this.btt_gerarPreco.TabIndex = 108;
+            this.btt_gerarPreco.Text = " Gerar preço \r\n de passeio\r\n";
+            this.btt_gerarPreco.TextColor = System.Drawing.Color.White;
+            this.btt_gerarPreco.UseVisualStyleBackColor = false;
+            this.btt_gerarPreco.Click += new System.EventHandler(this.btt_gerarPreco_Click);
+            // 
+            // btt_marcarPasseio
+            // 
+            this.btt_marcarPasseio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_marcarPasseio.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_marcarPasseio.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btt_marcarPasseio.BorderRadius = 10;
+            this.btt_marcarPasseio.BorderSize = 0;
+            this.btt_marcarPasseio.FlatAppearance.BorderSize = 0;
+            this.btt_marcarPasseio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btt_marcarPasseio.ForeColor = System.Drawing.Color.White;
+            this.btt_marcarPasseio.Location = new System.Drawing.Point(465, 485);
+            this.btt_marcarPasseio.Name = "btt_marcarPasseio";
+            this.btt_marcarPasseio.Size = new System.Drawing.Size(160, 46);
+            this.btt_marcarPasseio.TabIndex = 107;
+            this.btt_marcarPasseio.Text = "Marcar Passeio";
+            this.btt_marcarPasseio.TextColor = System.Drawing.Color.White;
+            this.btt_marcarPasseio.UseVisualStyleBackColor = false;
+            // 
+            // btt_escolherCaes
+            // 
+            this.btt_escolherCaes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_escolherCaes.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_escolherCaes.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btt_escolherCaes.BorderRadius = 10;
+            this.btt_escolherCaes.BorderSize = 0;
+            this.btt_escolherCaes.FlatAppearance.BorderSize = 0;
+            this.btt_escolherCaes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btt_escolherCaes.ForeColor = System.Drawing.Color.White;
+            this.btt_escolherCaes.Location = new System.Drawing.Point(155, 175);
+            this.btt_escolherCaes.Name = "btt_escolherCaes";
+            this.btt_escolherCaes.Size = new System.Drawing.Size(92, 34);
+            this.btt_escolherCaes.TabIndex = 106;
+            this.btt_escolherCaes.Text = "Escolher os selecionados";
+            this.btt_escolherCaes.TextColor = System.Drawing.Color.White;
+            this.btt_escolherCaes.UseVisualStyleBackColor = false;
+            this.btt_escolherCaes.Click += new System.EventHandler(this.btt_escolherCaes_Click);
             // 
             // Form5
             // 

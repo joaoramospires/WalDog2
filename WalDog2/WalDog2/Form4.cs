@@ -82,8 +82,6 @@ namespace WalDog2.Resources
 
         private void cBox_procurarDog_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-
             LimparCampos();
 
             string selectedDogName = cBox_procurarDog.SelectedIndex.ToString(); // Obtém o nome do cão selecionado na lista
