@@ -19,11 +19,47 @@ namespace WalDog2.Resources
             _user = user;
             this.ActiveControl = null;
             this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
+            this.dogDadosTA.FillByDogmenuu(this.walDogDataSet.DogDados, usernameToolStripTextBox.Text);
+
+
+           
         }
 
         private void Form4_Load(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            try
+            {
+                // Verificar se o DataSet contém a tabela desejada
+                if (walDogDataSet.Tables.Contains("DogDados"))
+                {
+                    // Obter a tabela do DataSet
+                    var tabela = walDogDataSet.Tables["DogDados"];
+                    // Verificar se a tabela contém a coluna desejada
+                    if (tabela.Columns.Contains("nameDog"))
+                    {
+                        // NÃO PASSA PELO FOREACH ---------------------------------------------------------------------
+                        // Iterar sobre as linhas da tabela e adicionar os itens à ComboBox
+                        foreach (DataRow row in tabela.Rows)
+                        {
+                            cBox_procurarDog.Items.Add(row["nameDog"].ToString());
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("A tabela não contém a coluna 'nameDog'.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("O DataSet não contém a tabela 'DogDados'.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao carregar dados: " + ex.Message);
+            }
+
         }
 
 
@@ -68,18 +104,6 @@ namespace WalDog2.Resources
             Application.Exit();
         }
 
-        //Limpa os campos
-        private void LimparCampos()
-        {
-            cBox_procurarDog.ResetText();
-
-            lbl_racaCao.ResetText();
-            rbtt_Simalergia.Checked = false;
-            rbtt_Naoalergia.Checked = false;
-            txt_descricao.Clear();
-
-        }
-
         private void cBox_procurarDog_SelectedIndexChanged(object sender, EventArgs e)
         {
             LimparCampos();
@@ -111,7 +135,26 @@ namespace WalDog2.Resources
 
                 txt_descricao.Text = descricao;
             }
-            
+
+        }
+
+        
+
+        //Limpa os campos
+        private void LimparCampos()
+        {
+            cBox_procurarDog.ResetText();
+
+            lbl_racaCao.ResetText();
+            rbtt_Simalergia.Checked = false;
+            rbtt_Naoalergia.Checked = false;
+            txt_descricao.Clear();
+
+        }
+
+        private void btt_adAumigo_MouseEnter(object sender, EventArgs e)
+        {
+
         }
     }
 }

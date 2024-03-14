@@ -4,9 +4,13 @@ USE WalDog
 
 -- SELECT * FROM Logar
 -- SELECT * FROM Pagamentos
--- SELECT * FROM BancoDinheiro
+-- SELECT * FROM BancoDinheiro 
+-- SELECt * FROM DogDados
 
 -- DELETE DogDados
+
+
+
 
 CREATE TABLE Logar
 (username VARCHAR (50) PRIMARY KEY NOT NULL,

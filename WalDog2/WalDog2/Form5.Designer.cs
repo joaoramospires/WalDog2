@@ -49,7 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lbl_nome = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbox_Cartao = new System.Windows.Forms.ComboBox();
             this.bancoDinheiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.lbl_precoPasseio = new System.Windows.Forms.Label();
@@ -289,20 +289,20 @@
             this.lbl_nome.TabIndex = 1;
             this.lbl_nome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // comboBox1
+            // cbox_Cartao
             // 
-            this.comboBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.comboBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bancoDinheiroBindingSource, "idPagamentos", true));
-            this.comboBox1.DataSource = this.bancoDinheiroBindingSource;
-            this.comboBox1.DisplayMember = "nome";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(339, 51);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.comboBox1.Size = new System.Drawing.Size(125, 21);
-            this.comboBox1.TabIndex = 100;
+            this.cbox_Cartao.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbox_Cartao.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbox_Cartao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbox_Cartao.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.bancoDinheiroBindingSource, "nome", true));
+            this.cbox_Cartao.DataSource = this.bancoDinheiroBindingSource;
+            this.cbox_Cartao.DisplayMember = "nome";
+            this.cbox_Cartao.FormattingEnabled = true;
+            this.cbox_Cartao.Location = new System.Drawing.Point(339, 51);
+            this.cbox_Cartao.Name = "cbox_Cartao";
+            this.cbox_Cartao.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.cbox_Cartao.Size = new System.Drawing.Size(125, 21);
+            this.cbox_Cartao.TabIndex = 100;
             // 
             // bancoDinheiroBindingSource
             // 
@@ -533,7 +533,7 @@
             this.Controls.Add(this.lst_mostrar);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.cbox_Cartao);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lbl_precoPasseio);
@@ -583,7 +583,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lbl_nome;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbox_Cartao;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lbl_precoPasseio;

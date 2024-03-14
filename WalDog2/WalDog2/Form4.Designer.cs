@@ -54,6 +54,11 @@
             this.btt_adCartao = new WalDog2.Botao();
             this.btt_adAumigo = new WalDog2.Botao();
             this.btt_mais = new WalDog2.Botao();
+            this.fillByDogmenuuToolStrip = new System.Windows.Forms.ToolStrip();
+            this.usernameToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.usernameToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.fillByDogmenuuToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
@@ -61,6 +66,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.fillByDogmenuuToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -105,8 +111,6 @@
             this.cBox_procurarDog.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cBox_procurarDog.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cBox_procurarDog.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.dogDadosBindingSource, "nameDog", true));
-            this.cBox_procurarDog.DataSource = this.dogDadosBindingSource;
-            this.cBox_procurarDog.DisplayMember = "nameDog";
             this.cBox_procurarDog.FormattingEnabled = true;
             this.cBox_procurarDog.ImeMode = System.Windows.Forms.ImeMode.On;
             this.cBox_procurarDog.IntegralHeight = false;
@@ -334,6 +338,7 @@
             this.btt_adAumigo.TextColor = System.Drawing.Color.White;
             this.btt_adAumigo.UseVisualStyleBackColor = false;
             this.btt_adAumigo.Click += new System.EventHandler(this.btt_adAumigo_Click);
+            this.btt_adAumigo.MouseEnter += new System.EventHandler(this.btt_adAumigo_MouseEnter);
             // 
             // btt_mais
             // 
@@ -356,12 +361,55 @@
             this.btt_mais.TextColor = System.Drawing.Color.White;
             this.btt_mais.UseVisualStyleBackColor = false;
             // 
+            // fillByDogmenuuToolStrip
+            // 
+            this.fillByDogmenuuToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.fillByDogmenuuToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usernameToolStripLabel,
+            this.usernameToolStripTextBox,
+            this.fillByDogmenuuToolStripButton,
+            this.toolStripButton1});
+            this.fillByDogmenuuToolStrip.Location = new System.Drawing.Point(0, 31);
+            this.fillByDogmenuuToolStrip.Name = "fillByDogmenuuToolStrip";
+            this.fillByDogmenuuToolStrip.Size = new System.Drawing.Size(459, 25);
+            this.fillByDogmenuuToolStrip.TabIndex = 19;
+            this.fillByDogmenuuToolStrip.Text = "fillByDogmenuuToolStrip";
+            this.fillByDogmenuuToolStrip.Visible = false;
+            // 
+            // usernameToolStripLabel
+            // 
+            this.usernameToolStripLabel.Name = "usernameToolStripLabel";
+            this.usernameToolStripLabel.Size = new System.Drawing.Size(62, 22);
+            this.usernameToolStripLabel.Text = "username:";
+            // 
+            // usernameToolStripTextBox
+            // 
+            this.usernameToolStripTextBox.Name = "usernameToolStripTextBox";
+            this.usernameToolStripTextBox.Size = new System.Drawing.Size(100, 23);
+            // 
+            // fillByDogmenuuToolStripButton
+            // 
+            this.fillByDogmenuuToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByDogmenuuToolStripButton.Name = "fillByDogmenuuToolStripButton";
+            this.fillByDogmenuuToolStripButton.Size = new System.Drawing.Size(99, 22);
+            this.fillByDogmenuuToolStripButton.Text = "FillByDogmenuu";
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "toolStripButton1";
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(459, 445);
+            this.ClientSize = new System.Drawing.Size(459, 454);
+            this.Controls.Add(this.fillByDogmenuuToolStrip);
             this.Controls.Add(this.btt_trocarConta);
             this.Controls.Add(this.btt_verPasseios);
             this.Controls.Add(this.btt_doPasseio);
@@ -388,7 +436,10 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.fillByDogmenuuToolStrip.ResumeLayout(false);
+            this.fillByDogmenuuToolStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -418,5 +469,10 @@
         private WalDogDataSetTableAdapters.DogDadosTA dogDadosTA;
         private WalDogDataSet walDogDataSet;
         private System.Windows.Forms.BindingSource dogDadosBindingSource;
+        private System.Windows.Forms.ToolStrip fillByDogmenuuToolStrip;
+        private System.Windows.Forms.ToolStripLabel usernameToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox usernameToolStripTextBox;
+        private System.Windows.Forms.ToolStripButton fillByDogmenuuToolStripButton;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
