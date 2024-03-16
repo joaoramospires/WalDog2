@@ -21,15 +21,25 @@ namespace WalDog2
         {
             InitializeComponent();
             _user = user;
-            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
-            this.bancoDinheiroTA.Fill(this.walDogDataSet.BancoDinheiro);
-            this.ActiveControl = null;
+
+            this.dogDadosTA.FillByMenu(this.walDogDataSet.DogDados, lst_mostrar.Text);
+            this.bancoDinheiroTA.FillByCartao(this.walDogDataSet1.BancoDinheiro, cbox_Cartao.Text);
         }
 
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            // TODO: esta linha de código carrega dados na tabela 'walDogDataSet.DogDados'. Você pode movê-la ou removê-la conforme necessário.
+            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
+           
+            // TODO: esta linha de código carrega dados na tabela 'walDogDataSet1.BancoDinheiro'. Você pode movê-la ou removê-la conforme necessário.
+            this.bancoDinheiroTA.Fill(this.walDogDataSet1.BancoDinheiro);
             
+
+
+            this.ActiveControl = null;
+
+
         }
 
 
@@ -40,9 +50,14 @@ namespace WalDog2
         }
 
 
-        private void btt_escolherCaes_Click(object sender, EventArgs e)
+        private void lst_mostrar_Enter(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void btt_marcarPasseio_Click(object sender, EventArgs e)
+        {
+
         }
 
 
@@ -73,6 +88,7 @@ namespace WalDog2
             double precoBasePorHora = 0.35; // Preço base por hora do passeio
 
             double quantidadeDog = lst_mostrar.SelectedItems.Count;
+
             double tempoPasseio = double.Parse(mtxt_tempoPasseio.Text);
             DateTime diaSelecionado = mdata_passeio.Value.Date; // Uso o (.Value) para obter a data do controle MetroDateTime
             DateTime hoje = DateTime.Today;
@@ -145,12 +161,6 @@ namespace WalDog2
         }
 
        
-        private void lst_mostrar_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 
 }
