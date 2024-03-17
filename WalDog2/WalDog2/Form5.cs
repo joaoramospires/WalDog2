@@ -85,7 +85,7 @@ namespace WalDog2
         {
             ContasPasseio();
         }
-
+        
 
         private void btt_marcarPasseio_Click(object sender, EventArgs e)
         {
@@ -127,19 +127,7 @@ namespace WalDog2
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+        // MÉTODOS ---------------------------------------------------------------------------------------------------------
         private void LimparCampos()
         {
             cbox_Cartao.ResetText();
