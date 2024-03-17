@@ -53,8 +53,11 @@ namespace WalDog2.Resources
             if (i == 4) // Verifica se foram selecionados quatro valores
             {
 
-                dogDadosTA.Insert(txt_nomeDog.Text, cbox_Tamanho.SelectedItem.ToString(), valores[0], valores[2], valores[1],
+                if(Validar() == false)
+                {
+                    dogDadosTA.Insert(txt_nomeDog.Text, cbox_Tamanho.SelectedItem.ToString(), valores[0], valores[2], valores[1],
                     valores[3], txt_descricao.Text, _user, cbox_racaDog.SelectedValue.ToString());
+                }
 
                 this.Hide();
                 new Form4(_user).Show();
@@ -105,17 +108,6 @@ namespace WalDog2.Resources
             return temErros;
         }
 
-        private void fillByToolStripButton_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                this.typeCaoTA.FillBy(this.walDogDataSet.TypeCao);
-            }
-            catch (System.Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.Message);
-            }
-
-        }
+       
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbtt_sair = new System.Windows.Forms.ToolStripButton();
@@ -41,9 +42,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dayContanier = new System.Windows.Forms.FlowLayoutPanel();
-            this.btt_previous = new WalDog2.Botao();
-            this.btt_next = new WalDog2.Botao();
             this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
+            this.btt_next = new WalDog2.Botao();
+            this.btt_previous = new WalDog2.Botao();
+            this.toolTip2 = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -185,25 +187,9 @@
             this.dayContanier.Size = new System.Drawing.Size(912, 626);
             this.dayContanier.TabIndex = 76;
             // 
-            // btt_previous
+            // passeiosTA
             // 
-            this.btt_previous.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_previous.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
-            this.btt_previous.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btt_previous.BorderRadius = 10;
-            this.btt_previous.BorderSize = 0;
-            this.btt_previous.FlatAppearance.BorderSize = 0;
-            this.btt_previous.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btt_previous.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.btt_previous.ForeColor = System.Drawing.Color.White;
-            this.btt_previous.Location = new System.Drawing.Point(29, 45);
-            this.btt_previous.Name = "btt_previous";
-            this.btt_previous.Size = new System.Drawing.Size(41, 35);
-            this.btt_previous.TabIndex = 84;
-            this.btt_previous.Text = "<";
-            this.btt_previous.TextColor = System.Drawing.Color.White;
-            this.btt_previous.UseVisualStyleBackColor = false;
-            this.btt_previous.Click += new System.EventHandler(this.btt_previous_Click);
+            this.passeiosTA.ClearBeforeFill = true;
             // 
             // btt_next
             // 
@@ -225,9 +211,25 @@
             this.btt_next.UseVisualStyleBackColor = false;
             this.btt_next.Click += new System.EventHandler(this.btt_next_Click);
             // 
-            // passeiosTA
+            // btt_previous
             // 
-            this.passeiosTA.ClearBeforeFill = true;
+            this.btt_previous.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_previous.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_previous.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btt_previous.BorderRadius = 10;
+            this.btt_previous.BorderSize = 0;
+            this.btt_previous.FlatAppearance.BorderSize = 0;
+            this.btt_previous.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btt_previous.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.btt_previous.ForeColor = System.Drawing.Color.White;
+            this.btt_previous.Location = new System.Drawing.Point(29, 45);
+            this.btt_previous.Name = "btt_previous";
+            this.btt_previous.Size = new System.Drawing.Size(41, 35);
+            this.btt_previous.TabIndex = 84;
+            this.btt_previous.Text = "<";
+            this.btt_previous.TextColor = System.Drawing.Color.White;
+            this.btt_previous.UseVisualStyleBackColor = false;
+            this.btt_previous.Click += new System.EventHandler(this.btt_previous_Click);
             // 
             // Form6
             // 
@@ -279,5 +281,6 @@
         private Botao btt_previous;
         private Botao btt_next;
         private WalDogDataSetTableAdapters.PasseiosTA passeiosTA;
+        private System.Windows.Forms.ToolTip toolTip2;
     }
 }

@@ -4,5 +4,8 @@
 
     public partial class WalDogDataSet
     {
+        partial class PasseiosDataTable
+        {
+        }
     }
 }

@@ -103,7 +103,7 @@ namespace WalDog2
             // chama o ID para ser introduzido na Bd
             var chamarID2 = dogDadosTA.GetDataByDadosCao(_user);
             int chamarID = chamarID2[0].idDoguinho;
-            // 
+
 
             passeiosTA.Insert(dataPasseio, Convert.ToDecimal(precoTotal), verificacao, _user, chamarID);
 
@@ -137,7 +137,6 @@ namespace WalDog2
             lbl_numCartao.ResetText();
             lbl_cvc.ResetText();
             lbl_valorConta.ResetText();
-            txt_descricao.Clear();
 
         }
 

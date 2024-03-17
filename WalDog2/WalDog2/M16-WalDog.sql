@@ -189,8 +189,7 @@ dataPasseio DATE NOT NULL ,
 precoCorrida DECIMAL(25, 2) NOT NULL,
 verificacao VARCHAR(15) NOT NULL,
 username VARCHAR(50), CONSTRAINT fk_usernameP FOREIGN KEY (username) REFERENCES Logar(username),
-idDoguinho INT, CONSTRAINT fk_idDog FOREIGN KEY (idDoguinho) REFERENCES DogDados (idDoguinho),
-descricao VARCHAR(200) NOT NULL)
+idDoguinho INT, CONSTRAINT fk_idDog FOREIGN KEY (idDoguinho) REFERENCES DogDados (idDoguinho))
 
 
 
