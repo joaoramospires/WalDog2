@@ -1854,6 +1854,8 @@ namespace WalDog2 {
             
             private global::System.Data.DataColumn columnidDoguinho;
             
+            private global::System.Data.DataColumn columndescricao;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public PasseiosDataTable() {
@@ -1937,6 +1939,14 @@ namespace WalDog2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn descricaoColumn {
+                get {
+                    return this.columndescricao;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1972,7 +1982,7 @@ namespace WalDog2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public PasseiosRow AddPasseiosRow(System.DateTime dataPasseio, decimal precoCorrida, string verificacao, LogarRow parentLogarRowByfk_usernameP, DogDadosRow parentDogDadosRowByfk_idDog) {
+            public PasseiosRow AddPasseiosRow(System.DateTime dataPasseio, decimal precoCorrida, string verificacao, LogarRow parentLogarRowByfk_usernameP, DogDadosRow parentDogDadosRowByfk_idDog, string descricao) {
                 PasseiosRow rowPasseiosRow = ((PasseiosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1980,7 +1990,8 @@ namespace WalDog2 {
                         precoCorrida,
                         verificacao,
                         null,
-                        null};
+                        null,
+                        descricao};
                 if ((parentLogarRowByfk_usernameP != null)) {
                     columnValuesArray[4] = parentLogarRowByfk_usernameP[0];
                 }
@@ -2022,6 +2033,7 @@ namespace WalDog2 {
                 this.columnverificacao = base.Columns["verificacao"];
                 this.columnusername = base.Columns["username"];
                 this.columnidDoguinho = base.Columns["idDoguinho"];
+                this.columndescricao = base.Columns["descricao"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2039,6 +2051,8 @@ namespace WalDog2 {
                 base.Columns.Add(this.columnusername);
                 this.columnidDoguinho = new global::System.Data.DataColumn("idDoguinho", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnidDoguinho);
+                this.columndescricao = new global::System.Data.DataColumn("descricao", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columndescricao);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnidPasseio}, true));
                 this.columnidPasseio.AutoIncrement = true;
@@ -2052,6 +2066,7 @@ namespace WalDog2 {
                 this.columnverificacao.AllowDBNull = false;
                 this.columnverificacao.MaxLength = 15;
                 this.columnusername.MaxLength = 50;
+                this.columndescricao.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3032,6 +3047,17 @@ namespace WalDog2 {
                 }
                 set {
                     this[this.tablePasseios.idDoguinhoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string descricao {
+                get {
+                    return ((string)(this[this.tablePasseios.descricaoColumn]));
+                }
+                set {
+                    this[this.tablePasseios.descricaoColumn] = value;
                 }
             }
             
@@ -6318,6 +6344,7 @@ SELECT idPagamentos, valorConta, username FROM Pagamentos WHERE (idPagamentos = 
             tableMapping.ColumnMappings.Add("verificacao", "verificacao");
             tableMapping.ColumnMappings.Add("username", "username");
             tableMapping.ColumnMappings.Add("idDoguinho", "idDoguinho");
+            tableMapping.ColumnMappings.Add("descricao", "descricao");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;

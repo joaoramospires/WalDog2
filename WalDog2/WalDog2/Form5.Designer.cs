@@ -60,7 +60,6 @@
             this.tsbtt_voltar = new System.Windows.Forms.ToolStripButton();
             this.dogDadosTA = new WalDog2.WalDogDataSetTableAdapters.DogDadosTA();
             this.pagamentosTA = new WalDog2.WalDogDataSetTableAdapters.PagamentosTA();
-            this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
             this.bancoDinheiroTA = new WalDog2.WalDogDataSetTableAdapters.BancoDinheiroTA();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mdata_passeio = new System.Windows.Forms.DateTimePicker();
@@ -72,6 +71,7 @@
             this.btt_gerarPreco = new WalDog2.Botao();
             this.btt_marcarPasseio = new WalDog2.Botao();
             this.cbox_Cartao = new MetroFramework.Controls.MetroComboBox();
+            this.walDogDataSet2 = new WalDog2.WalDogDataSet();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -81,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet2)).BeginInit();
             this.SuspendLayout();
             // 
             // label7
@@ -404,10 +405,6 @@
             // 
             this.pagamentosTA.ClearBeforeFill = true;
             // 
-            // passeiosTA
-            // 
-            this.passeiosTA.ClearBeforeFill = true;
-            // 
             // bancoDinheiroTA
             // 
             this.bancoDinheiroTA.ClearBeforeFill = true;
@@ -439,7 +436,6 @@
             this.lst_mostrar.FormattingEnabled = true;
             this.lst_mostrar.Location = new System.Drawing.Point(30, 72);
             this.lst_mostrar.Name = "lst_mostrar";
-            this.lst_mostrar.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.lst_mostrar.Size = new System.Drawing.Size(155, 108);
             this.lst_mostrar.TabIndex = 110;
             this.lst_mostrar.ValueMember = "username";
@@ -506,6 +502,11 @@
             this.cbox_Cartao.ValueMember = "username";
             this.cbox_Cartao.SelectedIndexChanged += new System.EventHandler(this.cbox_Cartao_SelectedIndexChanged);
             // 
+            // walDogDataSet2
+            // 
+            this.walDogDataSet2.DataSetName = "WalDogDataSet";
+            this.walDogDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -547,6 +548,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -586,7 +588,6 @@
         private Botao btt_gerarPreco;
         private WalDogDataSetTableAdapters.DogDadosTA dogDadosTA;
         private WalDogDataSetTableAdapters.PagamentosTA pagamentosTA;
-        private WalDogDataSetTableAdapters.PasseiosTA passeiosTA;
         private WalDogDataSetTableAdapters.BancoDinheiroTA bancoDinheiroTA;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DateTimePicker mdata_passeio;
@@ -596,5 +597,6 @@
         private WalDogDataSet walDogDataSet1;
         private System.Windows.Forms.BindingSource bancoDinheiroBindingSource;
         private MetroFramework.Controls.MetroComboBox cbox_Cartao;
+        private WalDogDataSet walDogDataSet2;
     }
 }

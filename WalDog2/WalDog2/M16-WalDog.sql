@@ -10,8 +10,6 @@ USE WalDog
 -- DELETE DogDados
 
 
-
-
 CREATE TABLE Logar
 (username VARCHAR (50) PRIMARY KEY NOT NULL,
 pass VARCHAR (50) NOT NULL)

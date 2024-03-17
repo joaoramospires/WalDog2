@@ -28,13 +28,19 @@ namespace WalDog2
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            // TODO: esta linha de código carrega dados na tabela 'walDogDataSet.DogDados'. Você pode movê-la ou removê-la conforme necessário.
-            this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
-            
-            // TODO: esta linha de código carrega dados na tabela 'walDogDataSet1.BancoDinheiro'. Você pode movê-la ou removê-la conforme necessário.
-            this.bancoDinheiroTA.Fill(this.walDogDataSet1.BancoDinheiro);
-            this.bancoDinheiroTA.FillByCarteira(this.walDogDataSet.BancoDinheiro, cbox_Cartao.Text);
+            try {
 
+                // TODO: esta linha de código carrega dados na tabela 'walDogDataSet.DogDados'. Você pode movê-la ou removê-la conforme necessário.
+                this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
+
+                // TODO: esta linha de código carrega dados na tabela 'walDogDataSet1.BancoDinheiro'. Você pode movê-la ou removê-la conforme necessário.
+                this.bancoDinheiroTA.Fill(this.walDogDataSet1.BancoDinheiro);
+                this.bancoDinheiroTA.FillByCarteira(this.walDogDataSet.BancoDinheiro, cbox_Cartao.Text);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             this.ActiveControl = null;
 
         }
@@ -82,6 +88,25 @@ namespace WalDog2
 
         private void btt_marcarPasseio_Click(object sender, EventArgs e)
         {
+            // Gerando uma combinação aleatória de até 10 caracteres
+            string verificacao = GeradordeCodigos(10);
+
+            MessageBox.Show($"O seu código de verificação é: {verificacao}", "Atenção");
+
+            mtxt_tempoPasseio.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            double precoTotal = ContasPasseio();
+
+            // Tenta converter o texto em mtxt_tempoPasseio para uma data
+            DateTime dataPasseio = DateTime.Parse(mdata_passeio.Text);
+
+            // chama o ID para ser introduzido na Bd
+            var chamarID2 = dogDadosTA.GetDataByDadosCao(_user);
+            int chamarID = chamarID2[0].idDoguinho;
+            // 
+
+            //passeiosTA.Insert(dataPasseio, Convert.ToDecimal(precoTotal), verificacao, _user, chamarID, txt_descricao.Text);
+
+
 
         }
 
@@ -104,6 +129,18 @@ namespace WalDog2
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
         private void LimparCampos()
         {
             cbox_Cartao.ResetText();
@@ -118,17 +155,16 @@ namespace WalDog2
         }
 
         // Metodo para calcular o preço do passeio
-        private void ContasPasseio()
+        private double ContasPasseio()
         {
-
+            double precoTotal = 0;
             mtxt_tempoPasseio.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
             // Atribuição dos valores
             double precoBasePorHora = 0.35; // Preço base por hora do passeio
 
-            double quantidadeDog = lst_mostrar.SelectedItems.Count;
-
             double tempoPasseio = double.Parse(mtxt_tempoPasseio.Text);
+
             DateTime diaSelecionado = mdata_passeio.Value.Date; // Uso o (.Value) para obter a data do controle MetroDateTime
             DateTime hoje = DateTime.Today;
 
@@ -143,21 +179,22 @@ namespace WalDog2
 
                 if (diaSelecionado > hoje)
                 {
-                    //precoChek = precoChek = ValorDosExtras * quantidadeDog * 1.1 acrescimoporDog
+                    
                     double precoChek = 0;
+                    
                     if (chek_treinamento.Checked)
                     {
-                        precoChek += 0.50 * (quantidadeDog * 1.1);
+                        precoChek += 0.50; //(quantidadeDog * 1.1)
                     }
 
                     if (chek_alimentacao.Checked)
                     {
-                        precoChek += 0.30 * (quantidadeDog * 1.1);
+                        precoChek += 0.30;
                     }
 
                     if (chek_cuidadoEspe.Checked)
                     {
-                        precoChek += 0.60 * (quantidadeDog * 1.1);
+                        precoChek += 0.60;
                     }
 
 
@@ -179,7 +216,7 @@ namespace WalDog2
 
                     // Calcule o preço total do passeio, incluindo:
                     // precoBasePorHora, tempoPasseio, taxaDias, quantidadeDog, precoChek
-                    double precoTotal = precoBasePorHora * tempoPasseio * taxaDias + precoChek;
+                     precoTotal =  taxaDias + (precoChek  * (precoBasePorHora * tempoPasseio));
 
                     lbl_precoPasseio.Text = precoTotal.ToString();
 
@@ -195,8 +232,40 @@ namespace WalDog2
                 MessageBox.Show("Por favor, selecione um dos seus animais.");
             }
 
+            return precoTotal;
+
         }
+
+
+        // Função para gerar uma combinação aleatória de letras e números
+        public static string GeradordeCodigos(int tamanho)
+        {
+            // Definindo os caracteres válidos (letras e números)
+            const string caracteresValidos = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+            // Criando um objeto Random para gerar números aleatórios
+            Random random = new Random();
+
+            // Criando uma variável para armazenar a combinação aleatória
+            StringBuilder combinacao = new StringBuilder();
+
+            // Gerando a combinação aleatória
+            for (int i = 0; i < tamanho; i++)
+            {
+                // Selecionando um caractere aleatório da lista de caracteres válidos
+                char caractere = caracteresValidos[random.Next(caracteresValidos.Length)];
+
+                // Adicionando o caractere à combinação
+                combinacao.Append(caractere);
+            }
+
+            // Retornando a combinação aleatória gerada
+            return combinacao.ToString();
+        }
+
        
     }
 
 }
+
+
