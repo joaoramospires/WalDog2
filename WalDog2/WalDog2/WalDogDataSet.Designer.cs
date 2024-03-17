@@ -46,9 +46,9 @@ namespace WalDog2 {
         
         private global::System.Data.DataRelation relationfk_usernameV;
         
-        private global::System.Data.DataRelation relationfk_idDog;
-        
         private global::System.Data.DataRelation relationfk_usernameP;
+        
+        private global::System.Data.DataRelation relationfk_idDog;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -333,8 +333,8 @@ namespace WalDog2 {
             this.relationfk_racaCachorro = this.Relations["fk_racaCachorro"];
             this.relationfk_usernameD = this.Relations["fk_usernameD"];
             this.relationfk_usernameV = this.Relations["fk_usernameV"];
-            this.relationfk_idDog = this.Relations["fk_idDog"];
             this.relationfk_usernameP = this.Relations["fk_usernameP"];
+            this.relationfk_idDog = this.Relations["fk_idDog"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -377,14 +377,14 @@ namespace WalDog2 {
                         this.tableLogar.usernameColumn}, new global::System.Data.DataColumn[] {
                         this.tablePagamentos.usernameColumn}, false);
             this.Relations.Add(this.relationfk_usernameV);
-            this.relationfk_idDog = new global::System.Data.DataRelation("fk_idDog", new global::System.Data.DataColumn[] {
-                        this.tableDogDados.idDoguinhoColumn}, new global::System.Data.DataColumn[] {
-                        this.tablePasseios.idDoguinhoColumn}, false);
-            this.Relations.Add(this.relationfk_idDog);
             this.relationfk_usernameP = new global::System.Data.DataRelation("fk_usernameP", new global::System.Data.DataColumn[] {
                         this.tableLogar.usernameColumn}, new global::System.Data.DataColumn[] {
                         this.tablePasseios.usernameColumn}, false);
             this.Relations.Add(this.relationfk_usernameP);
+            this.relationfk_idDog = new global::System.Data.DataRelation("fk_idDog", new global::System.Data.DataColumn[] {
+                        this.tableDogDados.idDoguinhoColumn}, new global::System.Data.DataColumn[] {
+                        this.tablePasseios.idDoguinhoColumn}, false);
+            this.Relations.Add(this.relationfk_idDog);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3063,23 +3063,23 @@ namespace WalDog2 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public DogDadosRow DogDadosRow {
-                get {
-                    return ((DogDadosRow)(this.GetParentRow(this.Table.ParentRelations["fk_idDog"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["fk_idDog"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public LogarRow LogarRow {
                 get {
                     return ((LogarRow)(this.GetParentRow(this.Table.ParentRelations["fk_usernameP"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["fk_usernameP"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public DogDadosRow DogDadosRow {
+                get {
+                    return ((DogDadosRow)(this.GetParentRow(this.Table.ParentRelations["fk_idDog"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["fk_idDog"]);
                 }
             }
             
@@ -6582,12 +6582,25 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho FR" +
                 "OM dbo.Passeios";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::Microsoft.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT        dataPasseio, username\r\nFROM            Passeios\r\nWHERE        (user" +
+                "name = @username)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            global::Microsoft.Data.SqlClient.SqlParameter param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@username";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SqlDbType = global::System.Data.SqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "username";
+            this._commandCollection[1].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6609,6 +6622,42 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual WalDogDataSet.PasseiosDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            WalDogDataSet.PasseiosDataTable dataTable = new WalDogDataSet.PasseiosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByData(WalDogDataSet.PasseiosDataTable dataTable, string username) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual WalDogDataSet.PasseiosDataTable GetDataByData(string username) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
             WalDogDataSet.PasseiosDataTable dataTable = new WalDogDataSet.PasseiosDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;

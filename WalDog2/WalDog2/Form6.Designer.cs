@@ -43,6 +43,7 @@
             this.dayContanier = new System.Windows.Forms.FlowLayoutPanel();
             this.btt_previous = new WalDog2.Botao();
             this.btt_next = new WalDog2.Botao();
+            this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
             this.panel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.SuspendLayout();
@@ -224,6 +225,10 @@
             this.btt_next.UseVisualStyleBackColor = false;
             this.btt_next.Click += new System.EventHandler(this.btt_next_Click);
             // 
+            // passeiosTA
+            // 
+            this.passeiosTA.ClearBeforeFill = true;
+            // 
             // Form6
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -273,5 +278,6 @@
         private System.Windows.Forms.FlowLayoutPanel dayContanier;
         private Botao btt_previous;
         private Botao btt_next;
+        private WalDogDataSetTableAdapters.PasseiosTA passeiosTA;
     }
 }

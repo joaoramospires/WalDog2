@@ -36,6 +36,7 @@ namespace WalDog2
                 // TODO: esta linha de código carrega dados na tabela 'walDogDataSet1.BancoDinheiro'. Você pode movê-la ou removê-la conforme necessário.
                 this.bancoDinheiroTA.Fill(this.walDogDataSet1.BancoDinheiro);
                 this.bancoDinheiroTA.FillByCarteira(this.walDogDataSet.BancoDinheiro, cbox_Cartao.Text);
+                this.passeiosTA.Fill(this.walDogDataSet1.Passeios);
             }
             catch (Exception ex)
             {
@@ -104,9 +105,7 @@ namespace WalDog2
             int chamarID = chamarID2[0].idDoguinho;
             // 
 
-            //passeiosTA.Insert(dataPasseio, Convert.ToDecimal(precoTotal), verificacao, _user, chamarID, txt_descricao.Text);
-
-
+            passeiosTA.Insert(dataPasseio, Convert.ToDecimal(precoTotal), verificacao, _user, chamarID);
 
         }
 
@@ -184,7 +183,7 @@ namespace WalDog2
                     
                     if (chek_treinamento.Checked)
                     {
-                        precoChek += 0.50; //(quantidadeDog * 1.1)
+                        precoChek += 0.50; 
                     }
 
                     if (chek_alimentacao.Checked)
