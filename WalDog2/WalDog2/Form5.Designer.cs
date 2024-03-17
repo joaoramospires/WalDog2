@@ -64,28 +64,23 @@
             this.bancoDinheiroTA = new WalDog2.WalDogDataSetTableAdapters.BancoDinheiroTA();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.mdata_passeio = new System.Windows.Forms.DateTimePicker();
-            this.btt_gerarPreco = new WalDog2.Botao();
-            this.btt_marcarPasseio = new WalDog2.Botao();
-            this.cbox_Cartao = new MetroFramework.Controls.MetroComboBox();
+            this.bancoDinheiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.walDogDataSet1 = new WalDog2.WalDogDataSet();
             this.lst_mostrar = new System.Windows.Forms.ListBox();
             this.dogDadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.walDogDataSet = new WalDog2.WalDogDataSet();
-            this.walDogDataSet1 = new WalDog2.WalDogDataSet();
-            this.bancoDinheiroBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.fillByCartaoToolStrip = new System.Windows.Forms.ToolStrip();
-            this.usernameToolStripLabel = new System.Windows.Forms.ToolStripLabel();
-            this.usernameToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
-            this.fillByCartaoToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.btt_gerarPreco = new WalDog2.Botao();
+            this.btt_marcarPasseio = new WalDog2.Botao();
+            this.cbox_Cartao = new MetroFramework.Controls.MetroComboBox();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bancoDinheiroBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bancoDinheiroBindingSource)).BeginInit();
-            this.fillByCartaoToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label7
@@ -300,7 +295,7 @@
             this.label2.Size = new System.Drawing.Size(122, 16);
             this.label2.TabIndex = 95;
             this.label2.Text = "Tempo de passeio";
-            this.toolTip1.SetToolTip(this.label2, "Coloque em minutos");
+            this.toolTip1.SetToolTip(this.label2, "Coloque em horas");
             // 
             // label1
             // 
@@ -311,6 +306,7 @@
             this.label1.Size = new System.Drawing.Size(107, 16);
             this.label1.TabIndex = 94;
             this.label1.Text = "Data do passeio";
+            this.toolTip1.SetToolTip(this.label1, "Quanto mais longe mais barato fica");
             // 
             // txt_descricao
             // 
@@ -338,7 +334,7 @@
             this.mtxt_tempoPasseio.Size = new System.Drawing.Size(40, 20);
             this.mtxt_tempoPasseio.TabIndex = 91;
             this.mtxt_tempoPasseio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.toolTip1.SetToolTip(this.mtxt_tempoPasseio, "Coloque em minutos");
+            this.toolTip1.SetToolTip(this.mtxt_tempoPasseio, "Coloque em horas");
             this.mtxt_tempoPasseio.ValidatingType = typeof(System.DateTime);
             // 
             // pictureBox2
@@ -424,6 +420,39 @@
             this.mdata_passeio.Name = "mdata_passeio";
             this.mdata_passeio.Size = new System.Drawing.Size(83, 22);
             this.mdata_passeio.TabIndex = 109;
+            this.toolTip1.SetToolTip(this.mdata_passeio, "Quanto mais longe mais barato fica");
+            // 
+            // bancoDinheiroBindingSource
+            // 
+            this.bancoDinheiroBindingSource.DataMember = "BancoDinheiro";
+            this.bancoDinheiroBindingSource.DataSource = this.walDogDataSet1;
+            // 
+            // walDogDataSet1
+            // 
+            this.walDogDataSet1.DataSetName = "WalDogDataSet";
+            this.walDogDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lst_mostrar
+            // 
+            this.lst_mostrar.DataSource = this.dogDadosBindingSource;
+            this.lst_mostrar.DisplayMember = "nameDog";
+            this.lst_mostrar.FormattingEnabled = true;
+            this.lst_mostrar.Location = new System.Drawing.Point(30, 72);
+            this.lst_mostrar.Name = "lst_mostrar";
+            this.lst_mostrar.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lst_mostrar.Size = new System.Drawing.Size(155, 108);
+            this.lst_mostrar.TabIndex = 110;
+            this.lst_mostrar.ValueMember = "username";
+            // 
+            // dogDadosBindingSource
+            // 
+            this.dogDadosBindingSource.DataMember = "DogDados";
+            this.dogDadosBindingSource.DataSource = this.walDogDataSet;
+            // 
+            // walDogDataSet
+            // 
+            this.walDogDataSet.DataSetName = "WalDogDataSet";
+            this.walDogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // btt_gerarPreco
             // 
@@ -467,76 +496,15 @@
             // 
             this.cbox_Cartao.DataSource = this.bancoDinheiroBindingSource;
             this.cbox_Cartao.DisplayMember = "nome";
+            this.cbox_Cartao.FormattingEnabled = true;
             this.cbox_Cartao.ItemHeight = 23;
             this.cbox_Cartao.Location = new System.Drawing.Point(333, 48);
             this.cbox_Cartao.Name = "cbox_Cartao";
             this.cbox_Cartao.Size = new System.Drawing.Size(121, 29);
-            this.cbox_Cartao.TabIndex = 0;
+            this.cbox_Cartao.TabIndex = 111;
             this.cbox_Cartao.UseSelectable = true;
             this.cbox_Cartao.ValueMember = "username";
-            // 
-            // lst_mostrar
-            // 
-            this.lst_mostrar.DataSource = this.dogDadosBindingSource;
-            this.lst_mostrar.DisplayMember = "nameDog";
-            this.lst_mostrar.FormattingEnabled = true;
-            this.lst_mostrar.Location = new System.Drawing.Point(30, 72);
-            this.lst_mostrar.Name = "lst_mostrar";
-            this.lst_mostrar.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.lst_mostrar.Size = new System.Drawing.Size(155, 108);
-            this.lst_mostrar.TabIndex = 110;
-            this.lst_mostrar.ValueMember = "username";
-            // 
-            // dogDadosBindingSource
-            // 
-            this.dogDadosBindingSource.DataMember = "DogDados";
-            this.dogDadosBindingSource.DataSource = this.walDogDataSet;
-            // 
-            // walDogDataSet
-            // 
-            this.walDogDataSet.DataSetName = "WalDogDataSet";
-            this.walDogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // walDogDataSet1
-            // 
-            this.walDogDataSet1.DataSetName = "WalDogDataSet";
-            this.walDogDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // bancoDinheiroBindingSource
-            // 
-            this.bancoDinheiroBindingSource.DataMember = "BancoDinheiro";
-            this.bancoDinheiroBindingSource.DataSource = this.walDogDataSet1;
-            // 
-            // fillByCartaoToolStrip
-            // 
-            this.fillByCartaoToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.usernameToolStripLabel,
-            this.usernameToolStripTextBox,
-            this.fillByCartaoToolStripButton});
-            this.fillByCartaoToolStrip.Location = new System.Drawing.Point(0, 31);
-            this.fillByCartaoToolStrip.Name = "fillByCartaoToolStrip";
-            this.fillByCartaoToolStrip.Size = new System.Drawing.Size(631, 25);
-            this.fillByCartaoToolStrip.TabIndex = 111;
-            this.fillByCartaoToolStrip.Text = "fillByCartaoToolStrip";
-            this.fillByCartaoToolStrip.Visible = false;
-            // 
-            // usernameToolStripLabel
-            // 
-            this.usernameToolStripLabel.Name = "usernameToolStripLabel";
-            this.usernameToolStripLabel.Size = new System.Drawing.Size(62, 22);
-            this.usernameToolStripLabel.Text = "username:";
-            // 
-            // usernameToolStripTextBox
-            // 
-            this.usernameToolStripTextBox.Name = "usernameToolStripTextBox";
-            this.usernameToolStripTextBox.Size = new System.Drawing.Size(100, 23);
-            // 
-            // fillByCartaoToolStripButton
-            // 
-            this.fillByCartaoToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.fillByCartaoToolStripButton.Name = "fillByCartaoToolStripButton";
-            this.fillByCartaoToolStripButton.Size = new System.Drawing.Size(74, 22);
-            this.fillByCartaoToolStripButton.Text = "FillByCartao";
+            this.cbox_Cartao.SelectedIndexChanged += new System.EventHandler(this.cbox_Cartao_SelectedIndexChanged);
             // 
             // Form5
             // 
@@ -544,9 +512,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(631, 556);
-            this.Controls.Add(this.fillByCartaoToolStrip);
-            this.Controls.Add(this.lst_mostrar);
             this.Controls.Add(this.cbox_Cartao);
+            this.Controls.Add(this.lst_mostrar);
             this.Controls.Add(this.mdata_passeio);
             this.Controls.Add(this.btt_gerarPreco);
             this.Controls.Add(this.btt_marcarPasseio);
@@ -576,12 +543,10 @@
             this.panel1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bancoDinheiroBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bancoDinheiroBindingSource)).EndInit();
-            this.fillByCartaoToolStrip.ResumeLayout(false);
-            this.fillByCartaoToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -625,15 +590,11 @@
         private WalDogDataSetTableAdapters.BancoDinheiroTA bancoDinheiroTA;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.DateTimePicker mdata_passeio;
-        private MetroFramework.Controls.MetroComboBox cbox_Cartao;
         private System.Windows.Forms.ListBox lst_mostrar;
         private WalDogDataSet walDogDataSet;
         private System.Windows.Forms.BindingSource dogDadosBindingSource;
         private WalDogDataSet walDogDataSet1;
         private System.Windows.Forms.BindingSource bancoDinheiroBindingSource;
-        private System.Windows.Forms.ToolStrip fillByCartaoToolStrip;
-        private System.Windows.Forms.ToolStripLabel usernameToolStripLabel;
-        private System.Windows.Forms.ToolStripTextBox usernameToolStripTextBox;
-        private System.Windows.Forms.ToolStripButton fillByCartaoToolStripButton;
+        private MetroFramework.Controls.MetroComboBox cbox_Cartao;
     }
 }

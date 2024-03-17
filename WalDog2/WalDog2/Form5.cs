@@ -23,7 +23,6 @@ namespace WalDog2
             _user = user;
 
             this.dogDadosTA.FillByMenu(this.walDogDataSet.DogDados, lst_mostrar.Text);
-            this.bancoDinheiroTA.FillByCartao(this.walDogDataSet1.BancoDinheiro, cbox_Cartao.Text);
         }
 
 
@@ -31,14 +30,45 @@ namespace WalDog2
         {
             // TODO: esta linha de código carrega dados na tabela 'walDogDataSet.DogDados'. Você pode movê-la ou removê-la conforme necessário.
             this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
-           
+            
             // TODO: esta linha de código carrega dados na tabela 'walDogDataSet1.BancoDinheiro'. Você pode movê-la ou removê-la conforme necessário.
             this.bancoDinheiroTA.Fill(this.walDogDataSet1.BancoDinheiro);
-            
-
+            this.bancoDinheiroTA.FillByCarteira(this.walDogDataSet.BancoDinheiro, cbox_Cartao.Text);
 
             this.ActiveControl = null;
 
+        }
+
+        // Mostrar os dados relacionados ao Dono do cartão
+        private void cbox_Cartao_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LimparCampos();
+
+            var procurarCartao = bancoDinheiroTA.GetDataByCarteira(_user);
+            string selectedName = cbox_Cartao.SelectedIndex.ToString();
+
+           
+            if (procurarCartao.Rows.Count > 0)
+            {
+                DataRow row = procurarCartao.Rows[int.Parse(selectedName) - 1];
+
+
+                string nome = row["nome"].ToString();
+                string nif = row["nif"].ToString();
+                string numCartao = row["numCartao"].ToString();
+                string codSegu = row["codSegu"].ToString();
+                string pagamentos = row["valorConta"].ToString();
+
+
+
+                // Exibe os dados na interface do usuário
+                lbl_nome.Text = nome;
+                lbl_nif.Text = nif;
+                lbl_numCartao.Text = numCartao;
+                lbl_cvc.Text = codSegu;
+                lbl_valorConta.Text = pagamentos;
+
+            }
 
         }
 
@@ -50,15 +80,12 @@ namespace WalDog2
         }
 
 
-        private void lst_mostrar_Enter(object sender, EventArgs e)
-        {
-
-        }
-
         private void btt_marcarPasseio_Click(object sender, EventArgs e)
         {
 
         }
+
+
 
 
         private void tsbtt_voltar_Click(object sender, EventArgs e)
@@ -77,8 +104,20 @@ namespace WalDog2
 
 
 
+        private void LimparCampos()
+        {
+            cbox_Cartao.ResetText();
 
+            lbl_nome.ResetText();
+            lbl_nif.ResetText();
+            lbl_numCartao.ResetText();
+            lbl_cvc.ResetText();
+            lbl_valorConta.ResetText();
+            txt_descricao.Clear();
 
+        }
+
+        // Metodo para calcular o preço do passeio
         private void ContasPasseio()
         {
 
@@ -108,17 +147,17 @@ namespace WalDog2
                     double precoChek = 0;
                     if (chek_treinamento.Checked)
                     {
-                        precoChek += 0.50 * quantidadeDog * 1.1;
+                        precoChek += 0.50 * (quantidadeDog * 1.1);
                     }
 
                     if (chek_alimentacao.Checked)
                     {
-                        precoChek += 0.30 * quantidadeDog * 1.1;
+                        precoChek += 0.30 * (quantidadeDog * 1.1);
                     }
 
                     if (chek_cuidadoEspe.Checked)
                     {
-                        precoChek += 0.60 * quantidadeDog * 1.1;
+                        precoChek += 0.60 * (quantidadeDog * 1.1);
                     }
 
 
@@ -142,8 +181,6 @@ namespace WalDog2
                     // precoBasePorHora, tempoPasseio, taxaDias, quantidadeDog, precoChek
                     double precoTotal = precoBasePorHora * tempoPasseio * taxaDias + precoChek;
 
-                    //MessageBox.Show($"Preço total: {precoTotal}");
-
                     lbl_precoPasseio.Text = precoTotal.ToString();
 
                 }
@@ -159,7 +196,6 @@ namespace WalDog2
             }
 
         }
-
        
     }
 

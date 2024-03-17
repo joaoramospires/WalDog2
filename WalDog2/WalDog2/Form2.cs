@@ -42,7 +42,7 @@ namespace WalDog2
 
             pagamentosTA.Fill(this.walDogDataSet.Pagamentos);
 
-            //
+            // chama o ID para ser introduzido na Bd
             var chamarID2 = pagamentosTA.GetDataByID(txt_username.Text);
             int chamarID = chamarID2[0].idPagamentos;
 

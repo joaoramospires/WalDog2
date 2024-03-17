@@ -26,15 +26,10 @@ namespace WalDog2.Resources
 
             this.dogDadosTA.Fill(this.walDogDataSet.DogDados);
             this.dogDadosTA.FillByMenu(this.walDogDataSet.DogDados, cBox_procurarDog.Text);
-
-
-
-
-
-            this.ActiveControl = null;            
         }
 
 
+        // Quando seleciono o nome do Dog ele me mostra alguns dados sobre eles
         private void cBox_procurarDog_SelectedIndexChanged(object sender, EventArgs e)
         {
             LimparCampos();
