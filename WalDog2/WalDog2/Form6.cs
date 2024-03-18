@@ -101,7 +101,7 @@ namespace WalDog2
                     userConDay.pbox_marcacao.MouseHover += (s, ev) =>
                     {
                         // ARRUMAR O DIA  -----------------------------------------------------------------
-                        var dadosDoBanco = passeiosTA.GetDataByDataUser(_user, dia);
+                        var dadosDoBanco = passeiosTA.GetDataByDataUser(_user, dia.ToString());
                         StringBuilder toolTipText = new StringBuilder();
 
                         foreach (var item in dadosDoBanco)
