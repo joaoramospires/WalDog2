@@ -22,7 +22,8 @@ namespace WalDog2
             InitializeComponent();
             _user = user;
 
-            this.dogDadosTA.FillByMenu(this.walDogDataSet.DogDados, lst_mostrar.Text);
+            this.dogDadosTA.FillByPasseioUser(this.walDogDataSet.DogDados, lst_mostrar.Text);
+
         }
 
 
@@ -37,6 +38,8 @@ namespace WalDog2
                 this.bancoDinheiroTA.Fill(this.walDogDataSet1.BancoDinheiro);
                 this.bancoDinheiroTA.FillByCarteira(this.walDogDataSet.BancoDinheiro, cbox_Cartao.Text);
                 this.passeiosTA.Fill(this.walDogDataSet1.Passeios);
+
+                
             }
             catch (Exception ex)
             {
@@ -209,13 +212,15 @@ namespace WalDog2
                 }
                 else
                 {
-                    MessageBox.Show("Por favor, selecione uma data posterior à data atual.");
+                    MessageBox.Show("Por favor, selecione uma data posterior à data atual.", "Atenção", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
 
             }
             else
             {
-                MessageBox.Show("Por favor, selecione um dos seus animais.");
+                MessageBox.Show("Por favor, selecione um dos seus animais.", "Atenção",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
 
             return precoTotal;
@@ -249,7 +254,7 @@ namespace WalDog2
             return combinacao.ToString();
         }
 
-       
+        
     }
 
 }

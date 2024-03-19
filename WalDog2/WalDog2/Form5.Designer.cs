@@ -71,6 +71,10 @@
             this.cbox_Cartao = new MetroFramework.Controls.MetroComboBox();
             this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
             this.Erros = new System.Windows.Forms.ErrorProvider(this.components);
+            this.fillByPasseioUserToolStrip = new System.Windows.Forms.ToolStrip();
+            this.usernameToolStripLabel = new System.Windows.Forms.ToolStripLabel();
+            this.usernameToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
+            this.fillByPasseioUserToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -81,6 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Erros)).BeginInit();
+            this.fillByPasseioUserToolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // label7
@@ -336,7 +341,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(627, 31);
+            this.panel1.Size = new System.Drawing.Size(635, 31);
             this.panel1.TabIndex = 105;
             // 
             // toolStrip1
@@ -348,7 +353,7 @@
             this.tsbtt_voltar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(627, 33);
+            this.toolStrip1.Size = new System.Drawing.Size(635, 33);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -491,12 +496,44 @@
             // 
             this.Erros.ContainerControl = this;
             // 
+            // fillByPasseioUserToolStrip
+            // 
+            this.fillByPasseioUserToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.usernameToolStripLabel,
+            this.usernameToolStripTextBox,
+            this.fillByPasseioUserToolStripButton});
+            this.fillByPasseioUserToolStrip.Location = new System.Drawing.Point(0, 31);
+            this.fillByPasseioUserToolStrip.Name = "fillByPasseioUserToolStrip";
+            this.fillByPasseioUserToolStrip.Size = new System.Drawing.Size(635, 25);
+            this.fillByPasseioUserToolStrip.TabIndex = 112;
+            this.fillByPasseioUserToolStrip.Text = "fillByPasseioUserToolStrip";
+            this.fillByPasseioUserToolStrip.Visible = false;
+            // 
+            // usernameToolStripLabel
+            // 
+            this.usernameToolStripLabel.Name = "usernameToolStripLabel";
+            this.usernameToolStripLabel.Size = new System.Drawing.Size(62, 22);
+            this.usernameToolStripLabel.Text = "username:";
+            // 
+            // usernameToolStripTextBox
+            // 
+            this.usernameToolStripTextBox.Name = "usernameToolStripTextBox";
+            this.usernameToolStripTextBox.Size = new System.Drawing.Size(100, 23);
+            // 
+            // fillByPasseioUserToolStripButton
+            // 
+            this.fillByPasseioUserToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.fillByPasseioUserToolStripButton.Name = "fillByPasseioUserToolStripButton";
+            this.fillByPasseioUserToolStripButton.Size = new System.Drawing.Size(101, 22);
+            this.fillByPasseioUserToolStripButton.Text = "FillByPasseioUser";
+            // 
             // Form5
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(627, 477);
+            this.ClientSize = new System.Drawing.Size(635, 485);
+            this.Controls.Add(this.fillByPasseioUserToolStrip);
             this.Controls.Add(this.cbox_Cartao);
             this.Controls.Add(this.lst_mostrar);
             this.Controls.Add(this.mdata_passeio);
@@ -531,6 +568,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Erros)).EndInit();
+            this.fillByPasseioUserToolStrip.ResumeLayout(false);
+            this.fillByPasseioUserToolStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -579,5 +618,9 @@
         private MetroFramework.Controls.MetroComboBox cbox_Cartao;
         private WalDogDataSetTableAdapters.PasseiosTA passeiosTA;
         private System.Windows.Forms.ErrorProvider Erros;
+        private System.Windows.Forms.ToolStrip fillByPasseioUserToolStrip;
+        private System.Windows.Forms.ToolStripLabel usernameToolStripLabel;
+        private System.Windows.Forms.ToolStripTextBox usernameToolStripTextBox;
+        private System.Windows.Forms.ToolStripButton fillByPasseioUserToolStripButton;
     }
 }

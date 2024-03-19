@@ -14,6 +14,7 @@ namespace WalDog2
 {
     public partial class Form6 : Form
     {
+        
          ToolTip toolTip1 = new ToolTip();
          
 
@@ -34,7 +35,7 @@ namespace WalDog2
         int mes, ano;
         private void btt_next_Click(object sender, EventArgs e)
         {
-            //Limpar container
+            // Limpar container
             dayContanier.Controls.Clear();
 
             if (mes != 12)
@@ -48,83 +49,74 @@ namespace WalDog2
                 mes = 1;
             }
 
+            // Definir o texto do ano
+            lbl_ano.Text = $"{CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mes)} {ano}";
 
-            // Isso faz o ano mudar, tanto número quanto palavra
-            String nomeMes = DateTimeFormatInfo.CurrentInfo.GetMonthName(mes);
-            lbl_ano.Text = nomeMes + " " + ano;
+            // Obter o primeiro dia do mês
+            DateTime primeiroDiaDoMes = new DateTime(ano, mes, 1);
 
-            // Conseguir o primeiro dia do mês
-            DateTime comecoMes = new DateTime(ano, mes, 1);
+            // Contar os dias do mês
+            int diasNoMes = DateTime.DaysInMonth(ano, mes);
 
-            //Contar os dias do mês
-            int dia = DateTime.DaysInMonth(ano, mes);
+            // Converter o primeiroDiaDoMes para INT
+            int diaDaSemana = (int)primeiroDiaDoMes.DayOfWeek;
 
-            //Converter o comecoMes para INT
-            int diasDaSemana = Convert.ToInt32(comecoMes.DayOfWeek.ToString("d"));
-
-            //Criar um UserControl (Fica na barra de tarefas -> Controle de Usuário)
-            for (int i = 0; i < diasDaSemana; i++)
+            // Adicionar UserControl para os dias em branco
+            for (int i = 0; i < diaDaSemana; i++)
             {
                 UserControlBlancks userConBln = new UserControlBlancks();
                 dayContanier.Controls.Add(userConBln);
             }
 
-            //Criar um UserControl para os dias (Fica na barra de tarefas -> Controle de Usuário)
-            for (int i = 1; i <= dia; i++)
+            // Adicionar UserControl para os dias
+            for (int i = 1; i <= diasNoMes; i++)
             {
                 UserControlDays userConDay = new UserControlDays(_user);
                 userConDay.Dias(i);
                 dayContanier.Controls.Add(userConDay);
-                
-                // Aqui você coloca o código para marcar os dias com base nos dados
-                DateTime dataAtual = comecoMes.AddDays(i - 1); // Obtém a data atual do loop
 
-                foreach (var item in passeiosTA.GetDataByDados(_user))
+                // Verificar se há dados para o dia atual
+                DateTime dataAtual = primeiroDiaDoMes.AddDays(i - 1);
+                var dadosDoBanco = passeiosTA.GetDataByDataUser(_user, dataAtual.ToString("yyyy-MM-dd"));
+
+                foreach (var item in dadosDoBanco)
                 {
-                    // Verifica se há dados para a data atual
+                    // Comparar a data do evento com a data atual do loop
                     if (item.dataPasseio.Date == dataAtual.Date)
                     {
                         userConDay.pbox_marcacao.Visible = true;
                     }
                 }
-            }
 
-
-            // Fazer aparecer os dados relacionados ao dia
-            foreach (Control control in dayContanier.Controls)
-            {
-                if (control is UserControlDays)
+                // Adicionar manipulador de evento MouseHover
+                userConDay.pbox_marcacao.MouseHover += (s, ev) =>
                 {
-                    UserControlDays userConDay = (UserControlDays)control;
+                    StringBuilder toolTipText = new StringBuilder();
 
-                    // Adiciona o manipulador de evento MouseHover ao controle pbox_marcacao
-                    userConDay.pbox_marcacao.MouseHover += (s, ev) =>
+                    foreach (var item in dadosDoBanco)
                     {
-                        // ARRUMAR O DIA  -----------------------------------------------------------------
-                        var dadosDoBanco = passeiosTA.GetDataByDataUser(_user, dia.ToString());
-                        StringBuilder toolTipText = new StringBuilder();
-
-                        foreach (var item in dadosDoBanco)
+                        // Comparar a data do evento com a data atual do loop
+                        if (item.dataPasseio.Date == dataAtual.Date)
                         {
-                            // Supondo que você tenha uma propriedade na classe Passeio que contém a informação que você deseja exibir
                             toolTipText.AppendLine($"Data: {item.dataPasseio}, Código do Passeio: {item.verificacao}");
                         }
+                    }
 
-                        toolTip1.SetToolTip(userConDay.pbox_marcacao, toolTipText.ToString());
-                    };
-                }
+                    toolTip1.SetToolTip(userConDay.pbox_marcacao, toolTipText.ToString());
+                };
             }
 
         }
 
+        
         private void btt_previous_Click(object sender, EventArgs e)
         {
-            //Limpar container
+            // Limpar container
             dayContanier.Controls.Clear();
 
             if (mes != 1)
             {
-                // voltar para ir de mês em mês
+                // Voltar para ir de mês em mês
                 mes--;
             }
             else
@@ -133,78 +125,65 @@ namespace WalDog2
                 mes = 12;
             }
 
-            // Isso faz o ano mudar, tanto número quanto palavra
-            String nomeMes = DateTimeFormatInfo.CurrentInfo.GetMonthName(mes);
-            lbl_ano.Text = nomeMes + " " + ano;
+            // Definir o texto do ano
+            lbl_ano.Text = $"{CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(mes)} {ano}";
 
-            // Conseguir o primeiro dia do mês
-            DateTime comecoMes = new DateTime(ano, mes, 1);
+            // Obter o primeiro dia do mês
+            DateTime primeiroDiaDoMes = new DateTime(ano, mes, 1);
 
-            //Contar os dias do mês
-            int dia = DateTime.DaysInMonth(ano, mes);
+            // Contar os dias do mês
+            int diasNoMes = DateTime.DaysInMonth(ano, mes);
 
-            //Converter o comecoMes para INT
-            int diasDaSemana = Convert.ToInt32(comecoMes.DayOfWeek.ToString("d"));
+            // Converter o primeiroDiaDoMes para INT
+            int diaDaSemana = (int)primeiroDiaDoMes.DayOfWeek;
 
-            //Criar um UserControl (Fica na barra de tarefas -> Controle de Usuário)
-            for (int i = 0; i < diasDaSemana; i++)
+            // Adicionar UserControl para os dias em branco
+            for (int i = 0; i < diaDaSemana; i++)
             {
                 UserControlBlancks userConBln = new UserControlBlancks();
                 dayContanier.Controls.Add(userConBln);
             }
 
-            //Criar um UserControl para os dias (Fica na barra de tarefas -> Controle de Usuário)
-            for (int i = 1; i <= dia; i++)
+            // Adicionar UserControl para os dias
+            for (int i = 1; i <= diasNoMes; i++)
             {
                 UserControlDays userConDay = new UserControlDays(_user);
                 userConDay.Dias(i);
                 dayContanier.Controls.Add(userConDay);
 
-                // Aqui você coloca o código para marcar os dias com base nos dados
-                DateTime dataAtual = comecoMes.AddDays(i - 1); // Obtém a data atual do loop
+                // Verificar se há dados para o dia atual
+                DateTime dataAtual = primeiroDiaDoMes.AddDays(i - 1);
+                var dadosDoBanco = passeiosTA.GetDataByDataUser(_user, dataAtual.ToString("yyyy-MM-dd"));
 
-                foreach (var item in passeiosTA.GetDataByDataUser(_user, Convert.ToString(dataAtual.Date)))
+                foreach (var item in dadosDoBanco)
                 {
-                    // Verifica se há dados para a data atual
+                    // Comparar a data do evento com a data atual do loop
                     if (item.dataPasseio.Date == dataAtual.Date)
                     {
                         userConDay.pbox_marcacao.Visible = true;
                     }
+                }
 
+                // Adicionar manipulador de evento MouseHover
+                userConDay.pbox_marcacao.MouseHover += (s, ev) =>
+                {
+                    StringBuilder toolTipText = new StringBuilder();
 
-
-                     
-
-
-                    // Fazer aparecer os dados relacionados ao dia
-                    foreach (Control control in dayContanier.Controls)
+                    foreach (var item in dadosDoBanco)
                     {
-                        if (control is UserControlDays)
+                        // Comparar a data do evento com a data atual do loop
+                        if (item.dataPasseio.Date == dataAtual.Date)
                         {
-                            UserControlDays userConDay2 = (UserControlDays)control;
-
-                            // Adiciona o manipulador de evento MouseHover ao controle pbox_marcacao
-                            userConDay2.pbox_marcacao.MouseHover += (s, ev) =>
-                            {
-                                // ARRUMAR O DIA  -----------------------------------------------------------------
-                                var dadosDoBanco = passeiosTA.GetDataByDataUser(_user, Convert.ToString(i));
-                                StringBuilder toolTipText = new StringBuilder();
-
-                                foreach (var item2 in dadosDoBanco)
-                                {
-                                    // Supondo que você tenha uma propriedade na classe Passeio que contém a informação que você deseja exibir
-                                    toolTipText.AppendLine($"Data: {item2.dataPasseio}, Código do Passeio: {item2.verificacao}");
-                                }
-
-                                toolTip1.SetToolTip(userConDay2.pbox_marcacao, toolTipText.ToString());
-                            };
+                            toolTipText.AppendLine($"Data: {item.dataPasseio}, Código do Passeio: {item.verificacao}");
                         }
                     }
-                }
+
+                    toolTip1.SetToolTip(userConDay.pbox_marcacao, toolTipText.ToString());
+                };
             }
 
-            
         }
+
 
         private void tsbtt_voltar_Click(object sender, EventArgs e)
         {
@@ -239,20 +218,20 @@ namespace WalDog2
             // Conseguir o primeiro dia do mês
             DateTime comecoMes = new DateTime(ano, mes, 1);
 
-            //Contar os dias do mês
+            // Contar os dias do mês
             int dia = DateTime.DaysInMonth(ano, mes);
 
-            //Converter o comecoMes para INT
+            // Converter o comecoMes para INT
             int diasDaSemana = Convert.ToInt32(comecoMes.DayOfWeek.ToString("d"));
 
-            //Criar um UserControl (Fica na barra de tarefas -> Controle de Usuário)
+            // Criar um UserControl (Fica na barra de tarefas -> Controle de Usuário)
             for (int i = 0; i < diasDaSemana; i++)
             {
                 UserControlBlancks userConBln = new UserControlBlancks();
                 dayContanier.Controls.Add(userConBln);
             }
 
-            //Criar um UserControl para os dias (Fica na barra de tarefas -> Controle de Usuário)
+            // Criar um UserControl para os dias (Fica na barra de tarefas -> Controle de Usuário)
             for (int i = 1; i <= dia; i++)
             {
                 UserControlDays userConDay = new UserControlDays(_user);
@@ -261,8 +240,9 @@ namespace WalDog2
 
                 // Aqui você coloca o código para marcar os dias com base nos dados
                 DateTime dataAtual = comecoMes.AddDays(i - 1); // Obtém a data atual do loop
+                var dadosDoBanco = passeiosTA.GetDataByDados(_user);
 
-                foreach (var item in passeiosTA.GetDataByDados(_user))
+                foreach (var item in dadosDoBanco)
                 {
                     // Verifica se há dados para a data atual
                     if (item.dataPasseio.Date == dataAtual.Date)
@@ -270,37 +250,26 @@ namespace WalDog2
                         userConDay.pbox_marcacao.Visible = true;
                     }
                 }
-            }
 
-            foreach (Control control in dayContanier.Controls)
-            {
-                if (control is UserControlDays)
+                // Adicionar manipulador de evento MouseHover
+                userConDay.pbox_marcacao.MouseHover += (s, ev) =>
                 {
-                    UserControlDays userConDay = (UserControlDays)control;
+                    StringBuilder toolTipText = new StringBuilder();
 
-                    // Adiciona o manipulador de evento MouseHover ao controle pbox_marcacao
-                    userConDay.pbox_marcacao.MouseHover += (s, ev) =>
+                    foreach (var item in dadosDoBanco)
                     {
-                        // ARRUMAR O DIA  -----------------------------------------------------------------
-                        var dadosDoBanco = passeiosTA.GetDataByDados(_user);
-                        StringBuilder toolTipText = new StringBuilder();
-
-                        foreach (var item in dadosDoBanco)
+                        // Comparar a data do evento com a data atual do loop
+                        if (item.dataPasseio.Date == dataAtual.Date)
                         {
-                            // Supondo que você tenha uma propriedade na classe Passeio que contém a informação que você deseja exibir
                             toolTipText.AppendLine($"Data: {item.dataPasseio}, Código do Passeio: {item.verificacao}");
                         }
+                    }
 
-                        toolTip1.SetToolTip(userConDay.pbox_marcacao, toolTipText.ToString());
-                    };
-                }
+                    toolTip1.SetToolTip(userConDay.pbox_marcacao, toolTipText.ToString());
+                };
             }
         }
 
-        private void DadosDia()
-        {
 
-            
-        }
     }
 }
