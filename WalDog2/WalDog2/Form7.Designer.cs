@@ -47,9 +47,13 @@
             this.txt_nome = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.btt_adCartao = new WalDog2.Botao();
             this.Erros = new System.Windows.Forms.ErrorProvider(this.components);
+            this.bancoDinheiroTA = new WalDog2.WalDogDataSetTableAdapters.BancoDinheiroTA();
+            this.pagamentosTA = new WalDog2.WalDogDataSetTableAdapters.PagamentosTA();
+            this.walDogDataSet = new WalDog2.WalDogDataSet();
             this.panel1.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Erros)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -251,6 +255,19 @@
             // 
             this.Erros.ContainerControl = this;
             // 
+            // bancoDinheiroTA
+            // 
+            this.bancoDinheiroTA.ClearBeforeFill = true;
+            // 
+            // pagamentosTA
+            // 
+            this.pagamentosTA.ClearBeforeFill = true;
+            // 
+            // walDogDataSet
+            // 
+            this.walDogDataSet.DataSetName = "WalDogDataSet";
+            this.walDogDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // Form7
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -280,6 +297,7 @@
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Erros)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.walDogDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,5 +323,8 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txt_nome;
         private Botao btt_adCartao;
         private System.Windows.Forms.ErrorProvider Erros;
+        private WalDogDataSetTableAdapters.BancoDinheiroTA bancoDinheiroTA;
+        private WalDogDataSetTableAdapters.PagamentosTA pagamentosTA;
+        private WalDogDataSet walDogDataSet;
     }
 }

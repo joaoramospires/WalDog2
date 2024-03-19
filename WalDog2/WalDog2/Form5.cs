@@ -23,7 +23,6 @@ namespace WalDog2
             _user = user;
 
             this.dogDadosTA.FillByPasseioUser(this.walDogDataSet.DogDados, lst_mostrar.Text);
-
         }
 
 
@@ -39,7 +38,7 @@ namespace WalDog2
                 this.bancoDinheiroTA.FillByCarteira(this.walDogDataSet.BancoDinheiro, cbox_Cartao.Text);
                 this.passeiosTA.Fill(this.walDogDataSet1.Passeios);
 
-                
+
             }
             catch (Exception ex)
             {
@@ -56,7 +55,6 @@ namespace WalDog2
 
             var procurarCartao = bancoDinheiroTA.GetDataByCarteira(_user);
             string selectedName = cbox_Cartao.SelectedIndex.ToString();
-
            
             if (procurarCartao.Rows.Count > 0)
             {

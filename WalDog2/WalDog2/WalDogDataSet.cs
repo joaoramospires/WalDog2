@@ -9,3 +9,10 @@
         }
     }
 }
+
+namespace WalDog2.WalDogDataSetTableAdapters {
+    
+    
+    public partial class DogDadosTA {
+    }
+}

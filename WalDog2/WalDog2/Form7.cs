@@ -29,6 +29,17 @@ namespace WalDog2
             mtxt_numCartao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
             mtxt_validadeCartao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
 
+            pagamentosTA.Insert(Int64.Parse(txt_valorConta.Text), _user);
+
+            pagamentosTA.Fill(this.walDogDataSet.Pagamentos);
+
+            // chama o ID para ser introduzido na Bd
+            var chamarID2 = pagamentosTA.GetDataByID(_user);
+            int chamarID = chamarID2[0].idPagamentos;
+
+
+            bancoDinheiroTA.Insert(txt_nome.Text, mtxt_nif.Text, mtxt_numCartao.Text,
+                mtxt_validadeCartao.Text, mtxt_cvc.Text, _user, Convert.ToInt32(chamarID));
 
 
 
