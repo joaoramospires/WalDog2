@@ -35,12 +35,12 @@ namespace WalDog2.Resources
         {
             LimparCampos();
 
-            string selectedDogName = cBox_procurarDog.SelectedIndex.ToString(); // Obtém o nome do cão selecionado na lista
+            string selectedDogName = cBox_procurarDog.Text; // Obtém o nome do cão selecionado na lista
             var procurarDog = dogDadosTA.GetDataByDadosCao(_user);
 
             if (procurarDog.Rows.Count > 0)
             {
-                DataRow row = procurarDog.Rows[int.Parse(selectedDogName)];
+                DataRow row = procurarDog.Rows[Convert.ToInt32(selectedDogName)];
 
                 string nomeOfDog = row["nameDog"].ToString();
                 string racaCao = row["racaCachorro"].ToString();
@@ -69,7 +69,7 @@ namespace WalDog2.Resources
 
         private void btt_deletar_Click(object sender, EventArgs e)
         {
-            string selectedDogName = cBox_procurarDog.SelectedIndex.ToString(); // Obtém o nome do cão selecionado na lista
+            string selectedDogName = cBox_procurarDog.Text; // Obtém o nome do cão selecionado na lista
             var procurarDog = dogDadosTA.GetDataByDadosCao(_user);
 
             if (procurarDog.Rows.Count > 0)
@@ -79,15 +79,19 @@ namespace WalDog2.Resources
 
                 if (resposta == DialogResult.Yes)
                 {
-                    DataRow row = procurarDog.Rows[int.Parse(selectedDogName)];
+                    // Procura pelo cão selecionado
+                    foreach (DataRow row in procurarDog.Rows)
+                    {
+                        // Verifica se o nome do cão na linha atual corresponde ao cão selecionado
+                        if (row["nameDog"].ToString() == selectedDogName)
+                        {
+                            // Obtém o ID do cão para exclusão
+                            int idCao = Convert.ToInt32(row["idDoguinho"]); // Supondo que o ID do cão está em uma coluna chamada "ID"
 
-
-                    // chama o ID para ser introduzido na Bd
-                    var chamarID2 = dogDadosTA.GetDataByDogID(_user);
-                    int chamarID = chamarID2[0].idDoguinho;
-
-                    dogDadosTA.Delete(chamarID, _user);
-                    dogDadosTA.Update(walDogDataSet.DogDados);
+                            dogDadosTA.Delete(idCao, _user);
+                            dogDadosTA.Update(walDogDataSet.DogDados);
+                        }
+                    }
                 }
             }
 

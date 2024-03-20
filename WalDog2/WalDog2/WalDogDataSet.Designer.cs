@@ -4603,9 +4603,11 @@ SELECT idDoguinho, nameDog, tamanho, gostarCarinho, brinquedo, amigavel, alergia
             this._commandCollection[3].Parameters.Add(param);
             this._commandCollection[4] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT        idDoguinho, nameDog, tamanho, gostarCarinho, brinquedo, amigavel, a" +
-                "lergia, descricao, username, racaCachorro\r\nFROM            DogDados\r\nWHERE      " +
-                "  (username = @username)";
+            this._commandCollection[4].CommandText = @"SELECT        DogDados.idDoguinho AS Expr3, DogDados.username AS Expr4, DogDados.nameDog, DogDados.tamanho, DogDados.gostarCarinho, DogDados.brinquedo, DogDados.amigavel, DogDados.alergia, DogDados.descricao, 
+                         DogDados.racaCachorro, Passeios.idDoguinho AS Expr1, Passeios.username AS Expr2, Passeios.*
+FROM            DogDados INNER JOIN
+                         Passeios ON DogDados.idDoguinho = Passeios.idDoguinho
+WHERE        (DogDados.username = @username)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@username";
@@ -4613,7 +4615,7 @@ SELECT idDoguinho, nameDog, tamanho, gostarCarinho, brinquedo, amigavel, alergia
             param.SqlDbType = global::System.Data.SqlDbType.VarChar;
             param.Size = 50;
             param.IsNullable = true;
-            param.SourceColumn = "username";
+            param.SourceColumn = "Expr4";
             this._commandCollection[4].Parameters.Add(param);
             this._commandCollection[5] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;

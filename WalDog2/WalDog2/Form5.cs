@@ -54,7 +54,7 @@ namespace WalDog2
             LimparCampos();
 
             var procurarCartao = bancoDinheiroTA.GetDataByCarteira(_user);
-            string selectedName = cbox_Cartao.SelectedIndex.ToString();
+            string selectedName = cbox_Cartao.Text;
            
             if (procurarCartao.Rows.Count > 0)
             {
