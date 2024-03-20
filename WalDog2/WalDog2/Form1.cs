@@ -17,6 +17,8 @@ namespace WalDog2
         public Form1()
         {
             InitializeComponent();
+
+            // MANDAR UM EMAIL DE QUANDO SERA O PASSEIO
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,7 +70,7 @@ namespace WalDog2
         private void timer1_Tick(object sender, EventArgs e)
         {
             //Deixar 50 = 5s
-            if (count == 0)
+            if (count == 20)
             {
                 pictureBox1.Visible = false;
                 pictureBox1.Enabled = false;

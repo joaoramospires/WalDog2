@@ -24,6 +24,8 @@ namespace WalDog2
         //Adicionar novos cartões
         private void btt_adCartao_Click(object sender, EventArgs e)
         {
+            Validar();
+
             // ISSO FAZ RETIRAR O TRAÇO OU QUALQUER CARACTER USADO NA MASKBOX
             //Tira a formatação
             mtxt_numCartao.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;

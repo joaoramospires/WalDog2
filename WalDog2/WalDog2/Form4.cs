@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WalDog2.WalDogDataSetTableAdapters;
 
 namespace WalDog2.Resources
 {
@@ -60,9 +61,39 @@ namespace WalDog2.Resources
                 }
 
                 txt_descricao.Text = descricao;
+
+                btt_deletar.Visible = true;
             }
 
         }
+
+        private void btt_deletar_Click(object sender, EventArgs e)
+        {
+            string selectedDogName = cBox_procurarDog.SelectedIndex.ToString(); // Obtém o nome do cão selecionado na lista
+            var procurarDog = dogDadosTA.GetDataByDadosCao(_user);
+
+            if (procurarDog.Rows.Count > 0)
+            {
+                DialogResult resposta = MessageBox.Show("Deseja eliminar o resgistro selecionado?",
+                "Confirmação da seleção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (resposta == DialogResult.Yes)
+                {
+                    DataRow row = procurarDog.Rows[int.Parse(selectedDogName)];
+
+
+                    // chama o ID para ser introduzido na Bd
+                    var chamarID2 = dogDadosTA.GetDataByDogID(_user);
+                    int chamarID = chamarID2[0].idDoguinho;
+
+                    dogDadosTA.Delete(chamarID, _user);
+                    dogDadosTA.Update(walDogDataSet.DogDados);
+                }
+            }
+
+                
+        }
+
 
         // Mostra todos os outros botões
         private void btt_mais_Click(object sender, EventArgs e)
@@ -131,5 +162,6 @@ namespace WalDog2.Resources
 
         }
 
+       
     }
 }

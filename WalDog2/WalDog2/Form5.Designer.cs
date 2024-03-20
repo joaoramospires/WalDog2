@@ -517,8 +517,9 @@
             // 
             // usernameToolStripTextBox
             // 
+            this.usernameToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.usernameToolStripTextBox.Name = "usernameToolStripTextBox";
-            this.usernameToolStripTextBox.Size = new System.Drawing.Size(100, 23);
+            this.usernameToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             // 
             // fillByPasseioUserToolStripButton
             // 

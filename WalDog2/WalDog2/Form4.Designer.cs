@@ -58,6 +58,7 @@
             this.usernameToolStripLabel = new System.Windows.Forms.ToolStripLabel();
             this.usernameToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillByMenuToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.btt_deletar = new WalDog2.Botao();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
@@ -385,8 +386,9 @@
             // 
             // usernameToolStripTextBox
             // 
+            this.usernameToolStripTextBox.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.usernameToolStripTextBox.Name = "usernameToolStripTextBox";
-            this.usernameToolStripTextBox.Size = new System.Drawing.Size(100, 23);
+            this.usernameToolStripTextBox.Size = new System.Drawing.Size(100, 25);
             // 
             // fillByMenuToolStripButton
             // 
@@ -395,12 +397,33 @@
             this.fillByMenuToolStripButton.Size = new System.Drawing.Size(70, 22);
             this.fillByMenuToolStripButton.Text = "FillByMenu";
             // 
+            // btt_deletar
+            // 
+            this.btt_deletar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_deletar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(135)))), ((int)(((byte)(50)))));
+            this.btt_deletar.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(111)))), ((int)(((byte)(71)))));
+            this.btt_deletar.BorderRadius = 10;
+            this.btt_deletar.BorderSize = 1;
+            this.btt_deletar.FlatAppearance.BorderSize = 0;
+            this.btt_deletar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btt_deletar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btt_deletar.ForeColor = System.Drawing.Color.White;
+            this.btt_deletar.Location = new System.Drawing.Point(368, 48);
+            this.btt_deletar.Name = "btt_deletar";
+            this.btt_deletar.Size = new System.Drawing.Size(70, 33);
+            this.btt_deletar.TabIndex = 23;
+            this.btt_deletar.Text = "Deletar";
+            this.btt_deletar.TextColor = System.Drawing.Color.White;
+            this.btt_deletar.UseVisualStyleBackColor = false;
+            this.btt_deletar.Click += new System.EventHandler(this.btt_deletar_Click);
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(460, 460);
+            this.Controls.Add(this.btt_deletar);
             this.Controls.Add(this.fillByMenuToolStrip);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.cBox_procurarDog);
@@ -465,5 +488,6 @@
         private System.Windows.Forms.ToolStripLabel usernameToolStripLabel;
         private System.Windows.Forms.ToolStripTextBox usernameToolStripTextBox;
         private System.Windows.Forms.ToolStripButton fillByMenuToolStripButton;
+        private Botao btt_deletar;
     }
 }

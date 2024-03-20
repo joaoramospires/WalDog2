@@ -58,7 +58,7 @@ namespace WalDog2
            
             if (procurarCartao.Rows.Count > 0)
             {
-                DataRow row = procurarCartao.Rows[int.Parse(selectedName) - 1];
+                DataRow row = procurarCartao.Rows[int.Parse(selectedName)];
 
 
                 string nome = row["nome"].ToString();
@@ -105,8 +105,15 @@ namespace WalDog2
             var chamarID2 = dogDadosTA.GetDataByDadosCao(_user);
             int chamarID = chamarID2[0].idDoguinho;
 
-
             passeiosTA.Insert(dataPasseio, Convert.ToDecimal(precoTotal), verificacao, _user, chamarID);
+
+
+            //var valorConta = pagamentosTA.GetDataByPagamentosUser(_user);
+
+            //var total = Convert.ToInt32(valorConta) - Convert.ToInt32(precoTotal);
+
+
+            //MessageBox.Show($"O resto é: {total}");
 
         }
 
