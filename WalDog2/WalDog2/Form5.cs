@@ -106,15 +106,7 @@ namespace WalDog2
             int chamarID = chamarID2[0].idDoguinho;
 
 
-            //passeiosTA.Insert(dataPasseio, Convert.ToDecimal(precoTotal), verificacao, _user, chamarID);
-
-
-            var valorConta = pagamentosTA.GetDataByPagamentosUser(_user);
-
-            var total = Convert.ToInt32(valorConta) - Convert.ToInt32(precoTotal);
-
-
-            MessageBox.Show($"O resto é: {total}");
+            passeiosTA.Insert(dataPasseio, Convert.ToDecimal(precoTotal), verificacao, _user, chamarID);
 
         }
 
