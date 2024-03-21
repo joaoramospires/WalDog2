@@ -38,31 +38,48 @@ namespace WalDog2.Resources
             string selectedDogName = cBox_procurarDog.Text; // Obtém o nome do cão selecionado na lista
             var procurarDog = dogDadosTA.GetDataByDadosCao(_user);
 
+            // Verifica se há linhas na tabela
             if (procurarDog.Rows.Count > 0)
             {
-                DataRow row = procurarDog.Rows[Convert.ToInt32(selectedDogName)];
+                DataRow row = null;
 
-                string nomeOfDog = row["nameDog"].ToString();
-                string racaCao = row["racaCachorro"].ToString();
-                string alergia = row["alergia"].ToString();
-                string descricao = row["descricao"].ToString();
-
-                // Exibe os dados na interface do usuário
-                groupBox1.Text = nomeOfDog;
-                lbl_racaCao.Text = racaCao;
-
-                if (alergia == "Sim")
+                // Procura a linha correspondente ao cão selecionado
+                foreach (DataRow dr in procurarDog.Rows)
                 {
-                    rbtt_Simalergia.Checked = true;
-                }
-                else
-                {
-                    rbtt_Naoalergia.Checked = true;
+                    if (dr["nameDog"].ToString() == selectedDogName)
+                    {
+                        row = dr;
+                        break;
+                    }
                 }
 
-                txt_descricao.Text = descricao;
+                // Verifica se o cão foi encontrado
+                if (row != null)
+                {
+                    // Extrai os dados do cão
+                    string nomeOfDog = row["nameDog"].ToString();
+                    string racaCao = row["racaCachorro"].ToString();
+                    string alergia = row["alergia"].ToString();
+                    string descricao = row["descricao"].ToString();
 
-                btt_deletar.Visible = true;
+                    // Exibe os dados na interface do usuário
+                    groupBox1.Text = nomeOfDog;
+                    lbl_racaCao.Text = racaCao;
+
+                    if (alergia == "Sim")
+                    {
+                        rbtt_Simalergia.Checked = true;
+                    }
+                    else
+                    {
+                        rbtt_Naoalergia.Checked = true;
+                    }
+
+                    txt_descricao.Text = descricao;
+
+                    btt_deletar.Visible = true;
+                }
+                
             }
 
         }
@@ -74,7 +91,7 @@ namespace WalDog2.Resources
 
             if (procurarDog.Rows.Count > 0)
             {
-                DialogResult resposta = MessageBox.Show("Deseja eliminar o resgistro selecionado?",
+                DialogResult resposta = MessageBox.Show("Deseja eliminar o resgistro selecionado? Se elimina-lo, perderá o dai do passeio",
                 "Confirmação da seleção", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (resposta == DialogResult.Yes)
@@ -87,9 +104,24 @@ namespace WalDog2.Resources
                         {
                             // Obtém o ID do cão para exclusão
                             int idCao = Convert.ToInt32(row["idDoguinho"]); // Supondo que o ID do cão está em uma coluna chamada "ID"
+                                                         
+                            // chama o ID para ser introduzido na Bd
+                            var chamarID2 = passeiosTA.GetDataByDados(_user);
+                            int chamarID = chamarID2[0].idPasseio;
 
+
+                            // PESQUISAR PARA VER SE EXISTE ALGUM PASSEIO, SE NÃO TIVER EXLUI UM DOG
+                            //Escluir o passeio
+                            passeiosTA.Delete(chamarID, _user, idCao);
+                            passeiosTA.Update(walDogDataSet.Passeios);
+                            passeiosTA.Fill(walDogDataSet.Passeios);
+
+                            //Excluir o Dog
                             dogDadosTA.Delete(idCao, _user);
                             dogDadosTA.Update(walDogDataSet.DogDados);
+                            dogDadosTA.Fill(walDogDataSet.DogDados);
+                            LimparCampos();
+
                         }
                     }
                 }
@@ -158,7 +190,7 @@ namespace WalDog2.Resources
         private void LimparCampos()
         {
             cBox_procurarDog.ResetText();
-
+            groupBox1.ResetText();
             lbl_racaCao.ResetText();
             rbtt_Simalergia.Checked = false;
             rbtt_Naoalergia.Checked = false;

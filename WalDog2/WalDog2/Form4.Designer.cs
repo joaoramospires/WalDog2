@@ -59,6 +59,7 @@
             this.usernameToolStripTextBox = new System.Windows.Forms.ToolStripTextBox();
             this.fillByMenuToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.btt_deletar = new WalDog2.Botao();
+            this.passeiosTA = new WalDog2.WalDogDataSetTableAdapters.PasseiosTA();
             this.panel1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dogDadosBindingSource)).BeginInit();
@@ -417,6 +418,10 @@
             this.btt_deletar.UseVisualStyleBackColor = false;
             this.btt_deletar.Click += new System.EventHandler(this.btt_deletar_Click);
             // 
+            // passeiosTA
+            // 
+            this.passeiosTA.ClearBeforeFill = true;
+            // 
             // Form4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -489,5 +494,6 @@
         private System.Windows.Forms.ToolStripTextBox usernameToolStripTextBox;
         private System.Windows.Forms.ToolStripButton fillByMenuToolStripButton;
         private Botao btt_deletar;
+        private WalDogDataSetTableAdapters.PasseiosTA passeiosTA;
     }
 }
