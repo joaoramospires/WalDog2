@@ -105,11 +105,8 @@ namespace WalDog2.Resources
                             // Obtém o ID do cão para exclusão
                             int idCao = Convert.ToInt32(row["idDoguinho"]);
 
-                            
-
                             if (idCao != 0)
                             {
-
                                 //Vê quantos passeios estão associados ao nome do Dog
                                 var procurarPasseio = passeiosTA.GetDataByNameDog(_user, selectedDogName);
 
@@ -126,7 +123,7 @@ namespace WalDog2.Resources
 
                                     //var contadorPasseios = passeiosTA.GetDataByCount(_user, selectedDogName);
 
-                                    //MessageBox.Show($"O passeio excluido com sucesso, faltam {contadorPasseios}.", "Atenção", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                                    //MessageBox.Show($"O passeio excluido com sucesso, faltam {contadorPasseios}.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                                 else
                                 {
