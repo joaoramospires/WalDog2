@@ -103,30 +103,69 @@ namespace WalDog2.Resources
                         if (row["nameDog"].ToString() == selectedDogName)
                         {
                             // Obtém o ID do cão para exclusão
-                            int idCao = Convert.ToInt32(row["idDoguinho"]); // Supondo que o ID do cão está em uma coluna chamada "ID"
-                                                         
-                            // chama o ID para ser introduzido na Bd
-                            var chamarID2 = passeiosTA.GetDataByDados(_user);
-                            int chamarID = chamarID2[0].idPasseio;
+                            int idCao = Convert.ToInt32(row["idDoguinho"]);
 
+                            
 
-                            // PESQUISAR PARA VER SE EXISTE ALGUM PASSEIO, SE NÃO TIVER EXLUI UM DOG
-                            //Escluir o passeio
-                            passeiosTA.Delete(chamarID, _user, idCao);
-                            passeiosTA.Update(walDogDataSet.Passeios);
-                            passeiosTA.Fill(walDogDataSet.Passeios);
+                            if (idCao != 0)
+                            {
 
-                            //Excluir o Dog
-                            dogDadosTA.Delete(idCao, _user);
-                            dogDadosTA.Update(walDogDataSet.DogDados);
-                            dogDadosTA.Fill(walDogDataSet.DogDados);
-                            LimparCampos();
+                                //Vê quantos passeios estão associados ao nome do Dog
+                                var procurarPasseio = passeiosTA.GetDataByNameDog(_user, selectedDogName);
+
+                                if (procurarPasseio != null)
+                                {
+                                    // chama o idPasseio da Bd
+                                    var chamarID2 = passeiosTA.GetDataByDados(_user);
+                                    int chamarID = chamarID2[0].idPasseio;
+
+                                    //Escluir o passeio
+                                    passeiosTA.Delete(chamarID, _user, idCao);
+                                    passeiosTA.Update(walDogDataSet.Passeios);
+                                    passeiosTA.Fill(walDogDataSet.Passeios);
+
+                                    //var contadorPasseios = passeiosTA.GetDataByCount(_user, selectedDogName);
+
+                                    //MessageBox.Show($"O passeio excluido com sucesso, faltam {contadorPasseios}.", "Atenção", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                                }
+                                else
+                                {
+                                    
+                                    
+                                    if (procurarPasseio == null)
+                                    {
+                                        //Excluir o Dog
+                                        dogDadosTA.Delete(idCao, _user);
+                                        dogDadosTA.Update(walDogDataSet.DogDados);
+                                        dogDadosTA.Fill(walDogDataSet.DogDados);
+                                        LimparCampos();
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("O não existe Dog para ser excluído .", "Atenção", 
+                                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                    }
+
+                                }
+
+                                //Dá um "F5" nesse forms
+                                this.Refresh();
+
+                            }
+                            else
+                            {
+                                MessageBox.Show("Já não existe cão e nem passeios associados ao mesmo.","Confirmação da seleção",   
+                                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
 
                         }
-                    }
-                }
-            }
 
+                    }
+
+                }
+
+            }
                 
         }
 

@@ -10,9 +10,12 @@
     }
 }
 
-namespace WalDog2.WalDogDataSetTableAdapters {
-    
-    
+namespace WalDog2.WalDogDataSetTableAdapters
+{
+    partial class PasseiosTA
+    {
+    }
+
     public partial class DogDadosTA {
     }
 }

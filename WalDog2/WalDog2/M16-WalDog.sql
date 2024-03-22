@@ -6,7 +6,7 @@ USE WalDog
 -- SELECT * FROM Pagamentos
 -- SELECT * FROM BancoDinheiro 
 -- SELECt * FROM DogDados
--- SELECt * FROM Passeios
+-- SELECT * FROM Passeios
 
 -- DELETE DogDados
 

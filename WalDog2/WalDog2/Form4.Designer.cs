@@ -416,6 +416,7 @@
             this.btt_deletar.Text = "Deletar";
             this.btt_deletar.TextColor = System.Drawing.Color.White;
             this.btt_deletar.UseVisualStyleBackColor = false;
+            this.btt_deletar.Visible = false;
             this.btt_deletar.Click += new System.EventHandler(this.btt_deletar_Click);
             // 
             // passeiosTA

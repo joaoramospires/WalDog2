@@ -4548,7 +4548,7 @@ SELECT idDoguinho, nameDog, tamanho, gostarCarinho, brinquedo, amigavel, alergia
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[7];
+            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[8];
             this._commandCollection[0] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idDoguinho, nameDog, tamanho, gostarCarinho, brinquedo, amigavel, alergia," +
@@ -4635,8 +4635,8 @@ WHERE        (DogDados.username = @username)";
             this._commandCollection[5].Parameters.Add(param);
             this._commandCollection[6] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT        idDoguinho, nameDog, username\r\nFROM            DogDados\r\nWHERE     " +
-                "   (username = @username)";
+            this._commandCollection[6].CommandText = "SELECT        nameDog, username\r\nFROM            DogDados\r\nWHERE        (username" +
+                " = @username) AND (nameDog = @nameDog)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@username";
@@ -4646,6 +4646,27 @@ WHERE        (DogDados.username = @username)";
             param.IsNullable = true;
             param.SourceColumn = "username";
             this._commandCollection[6].Parameters.Add(param);
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@nameDog";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SqlDbType = global::System.Data.SqlDbType.VarChar;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "nameDog";
+            this._commandCollection[6].Parameters.Add(param);
+            this._commandCollection[7] = new global::Microsoft.Data.SqlClient.SqlCommand();
+            this._commandCollection[7].Connection = this.Connection;
+            this._commandCollection[7].CommandText = "SELECT        idDoguinho, nameDog, username\r\nFROM            DogDados\r\nWHERE     " +
+                "   (username = @username)";
+            this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@username";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SqlDbType = global::System.Data.SqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "username";
+            this._commandCollection[7].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4834,8 +4855,56 @@ WHERE        (DogDados.username = @username)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByPasseioUser(WalDogDataSet.DogDadosDataTable dataTable, string username) {
+        public virtual int FillByNameDog(WalDogDataSet.DogDadosDataTable dataTable, string username, string nameDog) {
             this.Adapter.SelectCommand = this.CommandCollection[6];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
+            if ((nameDog == null)) {
+                throw new global::System.ArgumentNullException("nameDog");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nameDog));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual WalDogDataSet.DogDadosDataTable GetDataByNameDog(string username, string nameDog) {
+            this.Adapter.SelectCommand = this.CommandCollection[6];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
+            if ((nameDog == null)) {
+                throw new global::System.ArgumentNullException("nameDog");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nameDog));
+            }
+            WalDogDataSet.DogDadosDataTable dataTable = new WalDogDataSet.DogDadosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByPasseioUser(WalDogDataSet.DogDadosDataTable dataTable, string username) {
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((username == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -4854,7 +4923,7 @@ WHERE        (DogDados.username = @username)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual WalDogDataSet.DogDadosDataTable GetDataByPasseioUser(string username) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((username == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -6538,7 +6607,7 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[3];
+            this._commandCollection = new global::Microsoft.Data.SqlClient.SqlCommand[5];
             this._commandCollection[0] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho FR" +
@@ -6546,8 +6615,10 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT        idPasseio, dataPasseio, precoCorrida, verificacao, username, idDogu" +
-                "inho\r\nFROM            Passeios\r\nWHERE        (username = @username)";
+            this._commandCollection[1].CommandText = @"SELECT        DogDados.username, DogDados.nameDog, Passeios.idPasseio
+FROM            Passeios INNER JOIN
+                         DogDados ON Passeios.idDoguinho = DogDados.idDoguinho
+WHERE        (DogDados.username = @username) AND (DogDados.nameDog = @nameDog)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             global::Microsoft.Data.SqlClient.SqlParameter param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@username";
@@ -6557,11 +6628,18 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
             param.IsNullable = true;
             param.SourceColumn = "username";
             this._commandCollection[1].Parameters.Add(param);
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@nameDog";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SqlDbType = global::System.Data.SqlDbType.VarChar;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "nameDog";
+            this._commandCollection[1].Parameters.Add(param);
             this._commandCollection[2] = new global::Microsoft.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT        idPasseio, dataPasseio, precoCorrida, verificacao, username, idDogu" +
-                "inho\r\nFROM            Passeios\r\nWHERE        (username = @username) AND (dataPas" +
-                "seio = @dataPasseio)";
+                "inho\r\nFROM            Passeios\r\nWHERE        (username = @username)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@username";
@@ -6571,6 +6649,20 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
             param.IsNullable = true;
             param.SourceColumn = "username";
             this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3] = new global::Microsoft.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "SELECT        idPasseio, dataPasseio, precoCorrida, verificacao, username, idDogu" +
+                "inho\r\nFROM            Passeios\r\nWHERE        (username = @username) AND (dataPas" +
+                "seio = @dataPasseio)";
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@username";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SqlDbType = global::System.Data.SqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "username";
+            this._commandCollection[3].Parameters.Add(param);
             param = new global::Microsoft.Data.SqlClient.SqlParameter();
             param.ParameterName = "@dataPasseio";
             param.DbType = global::System.Data.DbType.AnsiString;
@@ -6578,7 +6670,30 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
             param.Size = 3;
             param.IsNullable = true;
             param.SourceColumn = "dataPasseio";
-            this._commandCollection[2].Parameters.Add(param);
+            this._commandCollection[3].Parameters.Add(param);
+            this._commandCollection[4] = new global::Microsoft.Data.SqlClient.SqlCommand();
+            this._commandCollection[4].Connection = this.Connection;
+            this._commandCollection[4].CommandText = @"SELECT        Passeios.idPasseio, Passeios.dataPasseio, Passeios.precoCorrida, Passeios.verificacao, Passeios.username, Passeios.idDoguinho, DogDados.nameDog
+FROM            Passeios INNER JOIN
+                         DogDados ON Passeios.idDoguinho = DogDados.idDoguinho
+WHERE        (Passeios.username = @username) AND (DogDados.nameDog = @nameDog)";
+            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@username";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SqlDbType = global::System.Data.SqlDbType.VarChar;
+            param.Size = 50;
+            param.IsNullable = true;
+            param.SourceColumn = "username";
+            this._commandCollection[4].Parameters.Add(param);
+            param = new global::Microsoft.Data.SqlClient.SqlParameter();
+            param.ParameterName = "@nameDog";
+            param.DbType = global::System.Data.DbType.AnsiString;
+            param.SqlDbType = global::System.Data.SqlDbType.VarChar;
+            param.Size = 20;
+            param.IsNullable = true;
+            param.SourceColumn = "nameDog";
+            this._commandCollection[4].Parameters.Add(param);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6609,8 +6724,56 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByDados(WalDogDataSet.PasseiosDataTable dataTable, string username) {
+        public virtual int FillByCount(WalDogDataSet.PasseiosDataTable dataTable, string username, string nameDog) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
+            if ((nameDog == null)) {
+                throw new global::System.ArgumentNullException("nameDog");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nameDog));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual WalDogDataSet.PasseiosDataTable GetDataByCount(string username, string nameDog) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
+            if ((nameDog == null)) {
+                throw new global::System.ArgumentNullException("nameDog");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nameDog));
+            }
+            WalDogDataSet.PasseiosDataTable dataTable = new WalDogDataSet.PasseiosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByDados(WalDogDataSet.PasseiosDataTable dataTable, string username) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((username == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -6629,7 +6792,7 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual WalDogDataSet.PasseiosDataTable GetDataByDados(string username) {
-            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((username == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -6646,7 +6809,7 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
         public virtual int FillByDataUser(WalDogDataSet.PasseiosDataTable dataTable, string username, string dataPasseio) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((username == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -6671,7 +6834,7 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual WalDogDataSet.PasseiosDataTable GetDataByDataUser(string username, string dataPasseio) {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             if ((username == null)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -6683,6 +6846,54 @@ SELECT idPasseio, dataPasseio, precoCorrida, verificacao, username, idDoguinho F
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((string)(dataPasseio));
+            }
+            WalDogDataSet.PasseiosDataTable dataTable = new WalDogDataSet.PasseiosDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByNameDog(WalDogDataSet.PasseiosDataTable dataTable, string username, string nameDog) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
+            if ((nameDog == null)) {
+                throw new global::System.ArgumentNullException("nameDog");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nameDog));
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual WalDogDataSet.PasseiosDataTable GetDataByNameDog(string username, string nameDog) {
+            this.Adapter.SelectCommand = this.CommandCollection[4];
+            if ((username == null)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+            }
+            if ((nameDog == null)) {
+                throw new global::System.ArgumentNullException("nameDog");
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(nameDog));
             }
             WalDogDataSet.PasseiosDataTable dataTable = new WalDogDataSet.PasseiosDataTable();
             this.Adapter.Fill(dataTable);
